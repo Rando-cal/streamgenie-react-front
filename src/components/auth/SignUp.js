@@ -21,6 +21,8 @@ const SignUp = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [userName, setUserName] = useState('')
+    const [region, setRegion] = useState('')
 
     const navigate = useNavigate()
 
@@ -29,7 +31,7 @@ const SignUp = (props) => {
 
 		const { msgAlert, setUser } = props
 
-        const credentials = {email, password, passwordConfirmation}
+        const credentials = {email, password, passwordConfirmation, userName, region }
 
 		signUp(credentials)
 			.then(() => signIn(credentials))
@@ -60,8 +62,30 @@ const SignUp = (props) => {
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h3>Sign Up</h3>
                 <Form onSubmit={onSignUp}>
+                    <Form.Group controlId='username'>
+                        {/* <Form.Label>Username</Form.Label> */}
+                        <Form.Control
+                            required
+                            name='user'
+                            value={userName}
+                            type='text'
+                            placeholder='UserName'
+                            onChange={e => setUserName(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId='region'>
+                        {/* <Form.Label>Region</Form.Label> */}
+                        <Form.Control
+                            required
+                            name='region'
+                            value={region}
+                            type='text'
+                            placeholder='Region'
+                            onChange={e => setRegion(e.target.value)}
+                        />
+                    </Form.Group>
                     <Form.Group controlId='email'>
-                        <Form.Label>Email address</Form.Label>
+                        {/* <Form.Label>Email address</Form.Label> */}
                         <Form.Control
                             required
                             type='email'
@@ -72,7 +96,7 @@ const SignUp = (props) => {
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
-                        <Form.Label>Password</Form.Label>
+                        {/* <Form.Label>Password</Form.Label> */}
                         <Form.Control
                             required
                             name='password'
@@ -83,7 +107,7 @@ const SignUp = (props) => {
                         />
                     </Form.Group>
                     <Form.Group controlId='passwordConfirmation'>
-                        <Form.Label>Password Confirmation</Form.Label>
+                        {/* <Form.Label>Password Confirmation</Form.Label> */}
                         <Form.Control
                             required
                             name='passwordConfirmation'
