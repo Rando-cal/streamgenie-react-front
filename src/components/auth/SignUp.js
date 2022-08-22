@@ -8,6 +8,10 @@ import messages from '../shared/AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+import regionList from '../../regionList'
+
+
+
 const SignUp = (props) => {
 	// constructor(props) {
 	// 	super(props)
@@ -56,6 +60,11 @@ const SignUp = (props) => {
 			})
 	}
 
+    const regions = regionList.map((region,index) => (
+         <option key={index}>{region.english_name}</option>
+    ))
+
+    console.log('regions************',regions)
 
     return (
         <div className='row'>
@@ -71,17 +80,6 @@ const SignUp = (props) => {
                             type='text'
                             placeholder='UserName'
                             onChange={e => setUserName(e.target.value)}
-                        />
-                    </Form.Group>
-                    <Form.Group controlId='region'>
-                        {/* <Form.Label>Region</Form.Label> */}
-                        <Form.Control
-                            required
-                            name='region'
-                            value={region}
-                            type='text'
-                            placeholder='Region'
-                            onChange={e => setRegion(e.target.value)}
                         />
                     </Form.Group>
                     <Form.Group controlId='email'>
@@ -116,6 +114,24 @@ const SignUp = (props) => {
                             placeholder='Confirm Password'
                             onChange={e => setPasswordConfirmation(e.target.value)}
                         />
+                    </Form.Group>
+
+                    <Form.Group controlId='region'>
+                        {/* <Form.Label>Region</Form.Label> */}
+                        <Form.Control
+                            required
+                            name='region'
+                            value={region}
+                            type='text'
+                            placeholder='Region'
+                            onChange={e => setRegion(e.target.value)}
+                        />
+                        <div class='search_select_box'>
+                            <select name="region" id="region">
+                                {regions}                            
+                            </select>                           
+
+                        </div>
                     </Form.Group>
                     <Button variant='primary' type='submit'>
                         Submit

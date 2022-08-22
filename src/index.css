@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.search_select_box {
+  max-width: 200px;
+  margin: 7px auto;
+}
+.search_select_box select {
+  width: 100px
+}
