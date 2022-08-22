@@ -2,9 +2,15 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+// import "../../../styles/generalStyle.css"
 const linkStyle = {
     color: 'white',
     textDecoration: 'none'
+}
+
+const navBarColor = {
+	color: 'red'
+	// color: '#191308' 
 }
 const authenticatedOptions = (
 	<>
@@ -43,10 +49,10 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar bg='primary' variant='dark' expand='md' style={navBarColor} >
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
-                react-auth-template
+                StreamGenie
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
