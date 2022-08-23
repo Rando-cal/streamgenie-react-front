@@ -1,14 +1,21 @@
 import Searchbox from './shared/Searchbox.js'
 
-const Home = (props) => {
+const Home = ({user}) => {
 	// const { msgAlert, user } = props
-	console.log('props in home', props)
+	console.log('props in home', user)
+
+	// DO cards under searchbox, not embedded
+	// style for whole HOME HERE
 
 	return (
-		<>
-			<h2>Home Page</h2>
-			{/* <Searchbox user={props.user}/> */}
-		</>
+		
+			<>
+			
+			<Searchbox user={user}/>
+
+			</>
+			
+		
 	)
 }
 

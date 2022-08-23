@@ -6,12 +6,9 @@ import axios from 'axios'
 export const searchIt = (user,searchValue) => {
     console.log('%$%$%$%%$%',user,searchValue);
 	return axios({
-		method: 'POST',
-		url: apiUrl + '/NEED-ROUTE',
-		data: {
-			user : user,
-            searchValue : searchValue            
+		method: 'GET',
+		url: apiUrl + '/movies/(:user)/:searchValue'
 			
-		}
+		
 	})
 }

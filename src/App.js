@@ -9,10 +9,12 @@ import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAl
 import Header from './components/shared/Header'
 import RequireAuth from './components/shared/RequireAuth'
 import Home from './components/Home'
-import SignUp from './components/auth/SignUp'
-import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/SignUp/SignUp.js'
+import SignIn from './components/auth/SignIn/SignIn.js'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+// need to import everytime you want to use stylingsheet
+import './index.css'
 
 const App = () => {
 
