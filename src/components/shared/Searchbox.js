@@ -33,15 +33,14 @@ const Searchbox = (props) => {
 		
 		<div className="searchBarContainer">
 			<Form onSubmit={onSearch}> 
-				<Form.Group className="mb-3" 
+				<Form.Group className="mb-3 searchBarWidth" 
 							controlId="searchBox">
 					{/* <Form.Label>Email address</Form.Label> */}
-					<Form.Control type="text" 
+					<Form.Control
+								type="text" 
 								placeholder="search for title"
 								onChange={e => setSearchValue(e.target.value)} />
-					<Form.Text className="text-muted">
-						
-					</Form.Text>
+					<Form.Text className="text-muted"> </Form.Text>
 				</Form.Group>
 				<Button id="searchSubmit" variant="secondary" type="submit">
 					Submit
