@@ -25,11 +25,9 @@ const Home = ({user}) => {
 		
 			<>
 			
-			{/* <Searchbox user={user}/> */}
 
-			<div> card between this </div>
-			<Cards topTitlesList={topTitlesList}/>
-			<div> and this </div>
+				<Cards topTitlesList={topTitlesList}/>
+
 
 			</>
 			

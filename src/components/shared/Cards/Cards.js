@@ -5,12 +5,10 @@ import './Cards.css'
 import { v4 as uuid } from 'uuid'
 import Card from 'react-bootstrap/Card';
 
-
-
-
 const Cards = ({topTitlesList}) => {
 
     console.log('topTitlesList from PROPS:',topTitlesList);
+    // console.log('~~~~~~~~~~~~~~~~~~~~~~:',topTitlesList[0].poster_path);
 
     const id = uuid()
 
@@ -33,34 +31,28 @@ const Cards = ({topTitlesList}) => {
 
     console.log('topTitles after useEffect:',topTitles)
 
-    let aPoster = 'https://image.tmdb.org/t/p/w500' + topTitles[0]
-    console.log('aPoster:^:',aPoster)
+    // let aPoster = 'https://image.tmdb.org/t/p/w500' + topTitles[0]
+    // console.log('aPoster:^:',aPoster)
 
     // console.log('topTitlesList==>',topTitlesList[0].poster_path)
 
-    const titleCards = topTitlesList.map((aTitle) => {
+    const backDropUrl = "https://image.tmdb.org/t/p/w500/"
 
-        <Card style={{ width: '18rem' }} key={aTitle.id}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-             <Card.Body>
-                <Card.Title>{aTitle.backdrop_path}</Card.Title>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-        </Card>
-    
-    })
+    const titleCards = topTitlesList.map((aTitle) => (
 
-    console.log('titleCards');
+        <div className= "width16"   key={aTitle.id}>
+                 <img className= "width16 p-20px" src={backDropUrl + aTitle.poster_path} />
+        </div>   
+    ))
+
+    console.log('titleCards',titleCards);
 
     return (
-        <div className= "card-container BG-black">
-            {titleCards}
+        <>
+        <div className= "BG-black">
+           <h1 className= "card-container">{titleCards}</h1>
         </div>
-
+        </>
     )
 }
 
