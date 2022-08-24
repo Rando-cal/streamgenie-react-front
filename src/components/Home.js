@@ -17,42 +17,25 @@ const Home = ({ user }) => {
 	// get top movies from netlix or whatever
 	useEffect(() => {
 		getTopTitles()
-<<<<<<< HEAD
-			.then(res => {
-				console.log("this is res", res)
-			})
-			.catch((error) => { console.log(error) })
-	})
 
+			.then((res) => { setTopTitlesList(res.data.results) })
+			.catch((error) => { console.log(error) })
+	}, [])
 
 	return (
 
 		<>
 
-			<Searchbox user={user} />
+			{/* <Searchbox user={user}/> */}
+
+			<div> card between this </div>
+			<Cards topTitlesList={topTitlesList} />
+			<div> and this </div>
 
 		</>
 
 
-=======
-		.then((res) => {setTopTitlesList(res.data.results)})
-		.catch((error)=> {console.log(error)})
-	},[])
 
-	return (
-		
-			<>
-			
-			{/* <Searchbox user={user}/> */}
-
-			<div> card between this </div>
-			<Cards topTitlesList={topTitlesList}/>
-			<div> and this </div>
-
-			</>
-			
-		
->>>>>>> 3428b89d3e12f50f7713d599ff2f94294b6649eb
 	)
 }
 
