@@ -3,7 +3,7 @@ import Searchbox from './shared/Searchbox.js'
 import { getTopTitles } from '../api/getTopTitles'
 import React, { useState } from 'react'
 
-const Home = ({user}) => {
+const Home = ({ user }) => {
 	// const { msgAlert, user } = props
 	console.log('props in home', user)
 
@@ -13,22 +13,24 @@ const Home = ({user}) => {
 	// style for whole HOME HERE
 
 	// get top movies from netlix or whatever
-	useEffect(()=> {
+	useEffect(() => {
 		getTopTitles()
-		.then()
-		.catch((error)=> {console.log(error)})
+			.then(res => {
+				console.log("this is res", res)
+			})
+			.catch((error) => { console.log(error) })
 	})
 
 
 	return (
-		
-			<>
-			
-			<Searchbox user={user}/>
 
-			</>
-			
-		
+		<>
+
+			<Searchbox user={user} />
+
+		</>
+
+
 	)
 }
 
