@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect} from 'react'
+import { Link} from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import './Cards.css'
@@ -40,9 +41,11 @@ const Cards = ({topTitlesList}) => {
 
     const titleCards = topTitlesList.map((aTitle) => (
 
+        <Link to="/show">
         <div className= "width16"   key={aTitle.id}>
                  <img className= "width16 p-20px" src={backDropUrl + aTitle.poster_path} />
         </div>   
+        </Link>
     ))
 
     console.log('titleCards',titleCards);
@@ -50,7 +53,7 @@ const Cards = ({topTitlesList}) => {
     return (
         <>
         <div className= "BG-black">
-           <h1 className= "card-container">{titleCards}</h1>
+           <div className= "card-container">{titleCards}</div>
         </div>
         </>
     )
