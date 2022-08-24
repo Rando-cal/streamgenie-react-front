@@ -23,14 +23,12 @@ const Home = ({ user }) => {
 	}, [])
 
 	return (
+		
+			<>
+			
 
-		<>
+				<Cards topTitlesList={topTitlesList}/>
 
-			{/* <Searchbox user={user}/> */}
-
-			<div> card between this </div>
-			<Cards topTitlesList={topTitlesList} />
-			<div> and this </div>
 
 		</>
 
