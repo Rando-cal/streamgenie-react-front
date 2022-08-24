@@ -21,22 +21,6 @@ const Cards = ({topTitlesList}) => {
     const [region, setRegion] = useState('')
     const [topTitles,setTopTitles] = useState([])
 
-    // console.log('topTitlesList[0] ******',topTitlesList[0].poster_path)
-
-
-    // WEIRDNESS with the topTitles setting and showing what we want. Save file to refresh
-    // useEffect(() => {		
-    //     console.log('in USE-EFFEFCT: Cards.js');	
-    //     setTopTitles(topTitlesList)
-	// },[])
-
-    console.log('topTitles after useEffect:',topTitles)
-
-    // let aPoster = 'https://image.tmdb.org/t/p/w500' + topTitles[0]
-    // console.log('aPoster:^:',aPoster)
-
-    // console.log('topTitlesList==>',topTitlesList[0].poster_path)
-
     const backDropUrl = "https://image.tmdb.org/t/p/w500/"
 
     const titleCards = topTitlesList.map((aTitle) => (
@@ -50,7 +34,7 @@ const Cards = ({topTitlesList}) => {
         </Link>
     ))
 
-    console.log('titleCards',titleCards);
+    // console.log('titleCards',titleCards);
 
     return (
         <>
@@ -62,4 +46,3 @@ const Cards = ({topTitlesList}) => {
 }
 
 export default Cards
-

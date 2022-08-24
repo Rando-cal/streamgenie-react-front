@@ -17,10 +17,9 @@ const Home = ({ user }) => {
 	// get top movies from netlix or whatever
 	useEffect(() => {
 		getTopTitles()
-
-			.then((res) => { setTopTitlesList(res.data.results) })
-			.catch((error) => { console.log(error) })
-	}, [])
+		.then((res) => {setTopTitlesList(res.data.movies)})
+		.catch((error)=> {console.log(error)})
+	},[])
 
 	return (
 		
