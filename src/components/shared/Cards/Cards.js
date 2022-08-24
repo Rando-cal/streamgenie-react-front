@@ -40,10 +40,12 @@ const Cards = ({topTitlesList}) => {
     const backDropUrl = "https://image.tmdb.org/t/p/w500/"
 
     const titleCards = topTitlesList.map((aTitle) => (
-
-        <Link to="/show">
-        <div className= "width16"   key={aTitle.id}>
+ 
+        <Link to={`/movie/${aTitle.id}`}>
+        <div className= "width16" key={aTitle.id}>
+                <a>
                  <img className= "width16 p-20px" src={backDropUrl + aTitle.poster_path} />
+                </a> 
         </div>   
         </Link>
     ))
