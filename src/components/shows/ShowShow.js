@@ -5,25 +5,25 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import { Container, Card, Button } from 'react-bootstrap'
 import LoadingScreen from '../shared/LoadingScreen'
-import { getOneMovie } from '../../api/movies.js'
+import { getOneShow } from '../../api/shows.js'
 import messages from '../shared/AutoDismissAlert/messages'
 import { addToFavorites, removeFromFavorites } from "../../api/favorites";
 
 //the movie's id comes from the 3rd party API
 
-const ShowMovie = (props) => {
-    const [movie, setMovie] = useState(null)
+const ShowShow = (props) => {
+    const [show, setShow] = useState(null)
 
     const { id } = useParams()
     const navigate = useNavigate()
     const { user, msgAlert } = props
 
     useEffect(() => {
-        getOneMovie(id)
-            .then(res => { return setMovie(res.data.movie), console.log("this is res.data.movie", res.data.movie) })
+        getOneShow(id)
+            .then(res => { return setShow(res.data.show), console.log("this is res.data.show", res.data.show) })
             .catch(err => {
                 msgAlert({
-                    heading: 'Error getting movie',
+                    heading: 'Error getting show',
                     message: messages.getContentFailure,
                     variant: 'danger'
                 })
@@ -33,9 +33,9 @@ const ShowMovie = (props) => {
     }, [])
 
 
-    //function to remove movie from the favorites list
-    const removeMovieFromFavorites = () => {
-        removeFromFavorites(user, movie.id)
+    //function to remove show from the favorites list
+    const removeShowFromFavorites = () => {
+        removeFromFavorites(user, show.id)
             // on success send a success message
             .then(() => {
                 msgAlert({
@@ -49,7 +49,7 @@ const ShowMovie = (props) => {
             // on failure send a failure message
             .catch(err => {
                 msgAlert({
-                    heading: 'Error removing movie',
+                    heading: 'Error removing show',
                     message: messages.removeContentFailure,
                     variant: 'danger'
                 })
@@ -57,9 +57,9 @@ const ShowMovie = (props) => {
     }
 
 
-    //function to add movie to favorites
-    const addToMovieToFavorites = () => {
-        addToFavorites(user, movie)
+    //function to add show to favorites
+    const addToShowToFavorites = () => {
+        addToFavorites(user, show)
             .then(() => {
                 msgAlert({
                     heading: 'Success',
@@ -79,18 +79,17 @@ const ShowMovie = (props) => {
             })
     }
 
-    if (!movie) {
+    if (!show) {
         return <LoadingScreen />
     }
 
     return (
         <Container className="fluid">
             <Card>
-                <Card.Header>{movie.title}</Card.Header>
-                <Card.Body><img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img></Card.Body>
+                <Card.Header>{show.original_title}</Card.Header>
             </Card>
         </Container>
     )
 }
 
-export default ShowMovie
+export default ShowShow

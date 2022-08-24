@@ -6,8 +6,8 @@ import Searchbox from './Searchbox'
 
 // import "../../../styles/generalStyle.css"
 const linkStyle = {
-    color: 'white',
-    textDecoration: 'none'
+	color: 'white',
+	textDecoration: 'none'
 }
 
 const navBarColor = {
@@ -31,12 +31,12 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Item>
-		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
-        </Nav.Item>
-        <Nav.Item>
-		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
-        </Nav.Item>
+		<Nav.Item>
+			<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+		</Nav.Item>
+		<Nav.Item>
+			<Link to='sign-in' style={linkStyle}>Sign In</Link>
+		</Nav.Item>
 		<Nav.Item>
 			<Searchbox />
 		</Nav.Item>
@@ -45,21 +45,21 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
+		<Nav.Item>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
-		</Nav.Link>
+		</Nav.Item>
 	</>
 )
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md' style={navBarColor} >
 		<Navbar.Brand>
-            <Link to='/' style={linkStyle}>
-                StreamGenie
-            </Link>
-        </Navbar.Brand>
+			<Link to='/' style={linkStyle}>
+				StreamGenie
+			</Link>
+		</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
