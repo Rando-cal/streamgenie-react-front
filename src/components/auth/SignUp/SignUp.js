@@ -13,7 +13,6 @@ import './SignUp.css'
 import regionList from '../../../regionList'
 
 
-
 const SignUp = (props) => {
 	// constructor(props) {
 	// 	super(props)
@@ -66,7 +65,7 @@ const SignUp = (props) => {
          <option key={index}>{region.english_name}</option>
     ))
 
-    console.log('regions************',regions)
+    // console.log('regions************',regions)
 
     return (
         <div className = "signUpContainer">
@@ -129,7 +128,7 @@ const SignUp = (props) => {
                                 placeholder='Region'
                                 onChange={e => setRegion(e.target.value)}
                             />
-                            <div class='search_select_box'>
+                            <div className='search_select_box'>
                                 <select name="region" id="region">
                                     {regions}                            
                                 </select>                           

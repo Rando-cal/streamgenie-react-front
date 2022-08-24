@@ -20,3 +20,14 @@ code {
 .search_select_box select {
   width: 100px
 }
+
+
+/* make the 'negative space' black */
+html{
+  background-color: black;
+}
+
+.whiteColor{
+  background-color: white;
+  color:white;
+}

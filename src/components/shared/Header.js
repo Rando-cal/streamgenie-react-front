@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+import Searchbox from './Searchbox'
+
 // import "../../../styles/generalStyle.css"
 const linkStyle = {
     color: 'white',
@@ -35,6 +37,9 @@ const unauthenticatedOptions = (
         <Nav.Item>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
+		<Nav.Item>
+			<Searchbox />
+		</Nav.Item>
 	</>
 )
 
