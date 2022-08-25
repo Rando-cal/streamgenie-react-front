@@ -49,6 +49,12 @@ const App = () => {
 		})
 	}
 
+	if(radioValue === "1"){
+		console.log('APP: MOVIES')
+	} else if (radioValue === "2"){
+		console.log('APP: TV!!')
+	}
+
 	return (
 		<Fragment>
 			<Header user={user}
