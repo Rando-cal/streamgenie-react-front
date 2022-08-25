@@ -45,11 +45,11 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
-		<Nav.Item>
+		{/* <Nav.Item>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
-		</Nav.Item>
+		</Nav.Item> */}
 	</>
 )
 
