@@ -42,9 +42,9 @@ const Searchbox = (props) => {
 								onChange={e => setSearchValue(e.target.value)} />
 					<Form.Text className="text-muted"> </Form.Text>
 				</Form.Group>
-				{/* <Button id="searchSubmit" variant="secondary" type="submit">
+				<Button id="searchSubmit" variant="secondary" type="submit">
 					Submit
-				</Button> */}
+				</Button>
 			</Form>
 		</div>
 		
