@@ -58,7 +58,7 @@ const ShowMovie = (props) => {
 
 
     //function to add movie to favorites
-    const addToMovieToFavorites = () => {
+    const addMovieToFavorites = () => {
         addToFavorites(user, movie)
             .then(() => {
                 msgAlert({
@@ -88,6 +88,12 @@ const ShowMovie = (props) => {
             <Card>
                 <Card.Header>{movie.title}</Card.Header>
                 <Card.Body><img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img></Card.Body>
+                <Card.Footer>
+                    <Button onClick={() => { addMovieToFavorites() }}
+                        className="m-2">
+                        Add To Favorites
+                    </Button>
+                </Card.Footer>
             </Card>
         </Container>
     )

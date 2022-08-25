@@ -1,8 +1,12 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import { Dropdown } from 'react-bootstrap'
+import NavLink from 'react-bootstrap/NavLink'
+import { NavItem } from 'react-bootstrap/'
 import { Link } from 'react-router-dom'
 import Searchbox from './Searchbox'
+import { NavDropdown } from 'react-bootstrap'
 
 // import "../../../styles/generalStyle.css"
 const linkStyle = {
@@ -50,6 +54,13 @@ const alwaysOptions = (
 				Home
 			</Link>
 		</Nav.Item>
+		<NavDropdown title="Platforms">
+			<NavDropdown.Item href="/movies/US/8">Netflix</NavDropdown.Item>
+			<NavDropdown.Item href="/movies/US/9">Amazon Prime</NavDropdown.Item>
+			<NavDropdown.Item href="/movies/US/15">Hulu</NavDropdown.Item>
+			<NavDropdown.Item href="/movies/US/384">HBO Maax</NavDropdown.Item>
+			<NavDropdown.Item href="/movies/US/390">Disney+</NavDropdown.Item>
+		</NavDropdown>
 	</>
 )
 

@@ -14,6 +14,7 @@ const cardContainerStyle = {
     flexFlow: 'row wrap',
     justifyContent: 'center'
 }
+const region = "US"
 
 const IndexMoviesByPlatform = (props) => {
     const { msgAlert, user, platformId } = props
@@ -23,7 +24,7 @@ const IndexMoviesByPlatform = (props) => {
 
 
     useEffect(() => {
-        getPopularMoviesByPlatform(user.region, platformId)
+        getPopularMoviesByPlatform(region, platformId)
             .then(res => setMovies(res.data.movies))
             .catch(err => {
                 msgAlert({
