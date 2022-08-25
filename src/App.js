@@ -15,8 +15,10 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 //Movie Components
 import ShowMovie from './components/movies/ShowMovie'
+import IndexMoviesByPlatform from './components/movies/IndexMoviesByPlatform'
 //Show Components
 import ShowShow from './components/shows/ShowShow'
+import IndexShowsByPlatform from './components/shows/IndexShowsByPlatform'
 // need to import everytime you want to use stylingsheet
 import './index.css'
 
@@ -82,6 +84,14 @@ const App = () => {
 				<Route
 					path="/show/:id"
 					element={<ShowShow user={user} msgAlert={msgAlert} />}
+				/>
+				<Route
+					path="/movies/:region/:id"
+					element={<IndexMoviesByPlatform user={user} msgAlert={msgAlert} />}
+				/>
+				<Route
+					path="/shows/:region/:id"
+					element={<IndexShowsByPlatform user={user} msgAlert={msgAlert} />}
 				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
