@@ -21,18 +21,10 @@ const Home = ({ user }) => {
 		.catch((error)=> {console.log(error)})
 	},[])
 
-	return (
-		
-			<>
-			
-
-				<Cards topTitlesList={topTitlesList}/>
-
-
+	return (		
+		<>
+			<Cards topTitlesList={topTitlesList}/>
 		</>
-
-
-
 	)
 }
 
