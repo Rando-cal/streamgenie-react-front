@@ -24,6 +24,8 @@ const App = () => {
 
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
+	const [radioValue, setRadioValue] = useState('1');
+
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
@@ -49,9 +51,15 @@ const App = () => {
 
 	return (
 		<Fragment>
-			<Header user={user} />
+			<Header user={user}
+					radioValue={radioValue}
+					setRadioValue={setRadioValue}
+			/>
 			<Routes>
-				<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
+				<Route path='/' element={<Home 
+											msgAlert={msgAlert} 
+											user={user}
+										/>} />
 				<Route
 					path='/sign-up'
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}

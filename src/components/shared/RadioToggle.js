@@ -4,23 +4,16 @@ import React, { useState, Fragment, useEffect } from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
-const RadioToggle = ({user, onSearch}) => {
+const RadioToggle = ({user, onSearch,radioValue,setRadioValue}) => {
 
         const [checked, setChecked] = useState(false);
-        const [radioValue, setRadioValue] = useState('1');
         console.log('radioValue',radioValue);
       
         const radios = [
           { name: 'Movies', value: '1' },
           { name: 'TV', value: '2' },
         ];
-
-        if(radioValue === '1'){
-
-        } else if (radioValue === '2'){
-
-        }
-      
+     
         return (
           <Fragment>           
             <ButtonGroup>

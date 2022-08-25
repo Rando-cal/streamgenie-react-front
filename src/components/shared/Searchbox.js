@@ -9,17 +9,14 @@ import { getMoviesByTitle } from '../../api/movies.js'
 import { getShowsByTitle } from '../../api/shows.js'
 
 
-const Searchbox = (props) => {
-	// const { msgAlert, user } = props
-	console.log('props in searchbox', props)
+const Searchbox = ({radioValue, setRadioValue}) => {
 	
 	const [searchValue, setSearchValue] = useState('')
 	const [user, setUser] = useState('')
 
-	useEffect(() => {
-		setUser(props.user)
-
-	},[])
+	// useEffect(() => {
+	// 	setUser(user)
+	// },[])
 
 	// // Prior version to search for titles
 	// const onSearch = (event) => {
@@ -51,7 +48,12 @@ const Searchbox = (props) => {
 					<Form.Text className="text-muted"> </Form.Text>
 				</Form.Group>				
 			</Form>
-			<RadioToggle  user={user}/>
+			<RadioToggle			
+				user={user}
+				onSearch={onSearch}
+				radioValue={radioValue}
+				setRadioValue={setRadioValue}
+			/>
 		</div>		
 	)
 }
