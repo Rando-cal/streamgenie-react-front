@@ -13,7 +13,7 @@ import './SignUp.css'
 import regionList from '../../../regionList'
 
 
-const SignUp = (props) => {
+const SignUp = ({msgAlert,setUser,region,setRegion}) => {
 	// constructor(props) {
 	// 	super(props)
 
@@ -27,14 +27,13 @@ const SignUp = (props) => {
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [userName, setUserName] = useState('')
-    const [region, setRegion] = useState('')
 
     const navigate = useNavigate()
 
 	const onSignUp = (event) => {
 		event.preventDefault()
 
-		const { msgAlert, setUser } = props
+		// const { msgAlert, setUser } = props
 
         const credentials = {email, password, passwordConfirmation, userName, region }
 
@@ -118,8 +117,8 @@ const SignUp = (props) => {
                             />
                         </Form.Group>
 
-                        <Form.Group controlId='region'>
-                            {/* <Form.Label>Region</Form.Label> */}
+                        {/* <Form.Group controlId='region'>
+                            <Form.Label>Region</Form.Label>
                             <Form.Control
                                 required
                                 name='region'
@@ -134,7 +133,7 @@ const SignUp = (props) => {
                                 </select>                           
 
                             </div>
-                        </Form.Group>
+                        </Form.Group> */}
                         <Button variant='secondary' type='submit'>
                             Submit
                         </Button>
