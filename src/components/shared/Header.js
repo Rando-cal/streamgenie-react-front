@@ -1,14 +1,20 @@
 import React, { useState,Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { Link } from 'react-router-dom'
+import { Dropdown } from 'react-bootstrap'
+import NavLink from 'react-bootstrap/NavLink'
+import { NavItem } from 'react-bootstrap/'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Searchbox from './Searchbox'
+import { NavDropdown } from 'react-bootstrap'
+import IndexMoviesByPlatform from '../movies/IndexMoviesByPlatform'
 
 // import "../../../styles/generalStyle.css"
 const linkStyle = {
 	color: 'white',
 	textDecoration: 'none'
 }
+
 
 const navBarColor = {
 	color: 'red'
@@ -51,15 +57,43 @@ const Header = ({ user, radioValue, setRadioValue}) => {
 		</>
 	)
 	
-	const alwaysOptions = (
-		<>
-			{/* <Nav.Item>
-				<Link to='/' style={linkStyle}>
-					Home
+const alwaysOptions = (
+	<>
+
+		<Nav.Item>
+			<Link to='/' style={linkStyle}>
+				Home
+			</Link>
+		</Nav.Item>
+		<NavDropdown title="Platforms">
+			<NavDropdown.Item>
+				<Link to={{ pathname: '/movies/platform/8' }} >
+					Netflix
 				</Link>
-			</Nav.Item> */}
-		</>
-	)
+			</NavDropdown.Item>
+			<NavDropdown.Item >
+				<Link to={{ pathname: '/movies/platform/384' }} >
+					Hbo Max
+				</Link>
+			</NavDropdown.Item>
+			<NavDropdown.Item >
+				<Link to={{ pathname: '/movies/platform/119' }} >
+					Amazon Prime
+				</Link>
+			</NavDropdown.Item>
+			<NavDropdown.Item >
+				<Link to={{ pathname: '/movies/platform/15' }} >
+					Hulu
+				</Link>
+			</NavDropdown.Item>
+			<NavDropdown.Item >
+				<Link to={{ pathname: '/movies/platform/337' }} >
+					Disney+
+				</Link>
+			</NavDropdown.Item>
+		</NavDropdown>
+	</>
+)
 
 	return(
 		<Navbar bg='primary' variant='dark' expand='md' style={navBarColor} >
