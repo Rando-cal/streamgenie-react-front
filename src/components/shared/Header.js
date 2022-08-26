@@ -32,6 +32,7 @@ const Header =
 	searchValue,
 	searchIndexMovieList,
 	setSearchIndexMovieList
+	
 	}) => {
 
 	const authenticatedOptions = (

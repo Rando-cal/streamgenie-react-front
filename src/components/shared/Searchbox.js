@@ -44,7 +44,7 @@ const Searchbox =  ({
 			
 		} else if(radioValue === "2"){
 			getShowsByTitle(region,searchValue,user)
-			.then((res) => { console.log('TvRES####',res);})
+			.then((res) => { setSearchIndexMovieList(res.data.movies)})
 			.catch((error) => {console.log(error)})
 		}
 

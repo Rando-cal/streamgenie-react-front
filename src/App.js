@@ -68,7 +68,7 @@ const App = () => {
 					searchValue={searchValue}
 					setSearchValue={setSearchValue}
 					searchIndexMovieList={searchIndexMovieList}
-					setSearchIndexMovieList={setSearchIndexMovieList}
+					setSearchIndexMovieList={setSearchIndexMovieList}				
 			/>
 			<Routes>
 				<Route path='/' element={<Home 

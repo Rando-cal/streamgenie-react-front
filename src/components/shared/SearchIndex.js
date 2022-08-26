@@ -8,8 +8,6 @@ import { getShowsByTitle } from '../../api/shows.js'
 import Cards from '../shared/Cards/Cards'
 import {useParams} from 'react-router-dom'
 
-
-
 const SearchIndex = ({user, 
                     msgAlert,
                     radioValue,
@@ -26,13 +24,13 @@ const SearchIndex = ({user,
 		console.log(searchIndexMovieList)
 	},[searchIndexMovieList])
     
-    const {term} = useParams()
-    // do
+    // ??
+    //const {term} = useParams()
 
     return(
         <>
             <div>
-                <Cards topTitlesList={searchIndexMovieList}/>
+                <Cards topTitlesList={searchIndexMovieList} radioValue={radioValue}/>
 
             </div>
         </>
