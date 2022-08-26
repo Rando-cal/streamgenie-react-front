@@ -27,6 +27,7 @@ import './index.css'
 //******************************************************************************** */
 
 
+
 const App = () => {
 
 	const [user, setUser] = useState(null)
@@ -34,6 +35,9 @@ const App = () => {
 	const [radioValue, setRadioValue] = useState('1');
 	const [searchValue, setSearchValue] = useState('')
 	const [searchIndexMovieList, setSearchIndexMovieList]= useState([])
+
+	//set in SignUp.js
+	const [region, setRegion] = useState('')
 
 	console.log('message alerts', msgAlerts)
 	const clearUser = () => {
@@ -73,7 +77,12 @@ const App = () => {
 										/>} />
 				<Route
 					path='/sign-up'
-					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
+					element={<SignUp 
+								msgAlert={msgAlert} 
+								setUser={setUser} 
+								region={region} 
+								setRegion={setRegion}
+							/>}
 				/>
 				<Route
 					path='/sign-in'
