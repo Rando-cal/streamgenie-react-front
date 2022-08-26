@@ -2,7 +2,7 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 
-// what kind of http request ???
+// Used for Homepage top list 
 export const searchIt = (user,searchValue) => {
     console.log('%$%$% in search.js $%%$%',user,searchValue);
 	return axios({

@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Cards from './shared/Cards/Cards'
 
 
-const Home = ({ user }) => {
+const Home = ({ user,radioValue,setRadioValue }) => {
 	// const { msgAlert, user } = props
 	console.log('props in home', user)
 
@@ -21,18 +21,10 @@ const Home = ({ user }) => {
 		.catch((error)=> {console.log(error)})
 	},[])
 
-	return (
-		
-			<>
-			
-
-				<Cards topTitlesList={topTitlesList}/>
-
-
+	return (		
+		<>
+			<Cards topTitlesList={topTitlesList}/>
 		</>
-
-
-
 	)
 }
 

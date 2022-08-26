@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { useState,Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
@@ -14,51 +14,59 @@ const navBarColor = {
 	color: 'red'
 	// color: '#191308' 
 }
-const authenticatedOptions = (
-	<>
-		<Nav.Item>
-			<Link to='change-password' style={linkStyle}>
-				Change Password
-			</Link>
-		</Nav.Item>
-		<Nav.Item>
-			<Link to='sign-out' style={linkStyle}>
-				Sign Out
-			</Link>
-		</Nav.Item>
-	</>
-)
 
-const unauthenticatedOptions = (
-	<>
-		<Nav.Item>
-			<Link to='sign-up' style={linkStyle}>Sign Up</Link>
-		</Nav.Item>
-		<Nav.Item>
-			<Link to='sign-in' style={linkStyle}>Sign In</Link>
-		</Nav.Item>
-		<Nav.Item>
-			<Searchbox />
-		</Nav.Item>
-	</>
-)
 
-const alwaysOptions = (
-	<>
-		{/* <Nav.Item>
-			<Link to='/' style={linkStyle}>
-				Home
-			</Link>
-		</Nav.Item> */}
-	</>
-)
+// PAY ATTENTION TO CALLBACK FUNCTION and whether it is a () or {} -----> implicit vs explicit return
+const Header = ({ user, radioValue, setRadioValue}) => {
 
-const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md' style={navBarColor} >
+	const authenticatedOptions = (
+		<>
+			<Nav.Item>
+				<Link to='change-password' style={linkStyle}>
+					Change Password
+				</Link>
+			</Nav.Item>
+			<Nav.Item>
+				<Link to='sign-out' style={linkStyle}>
+					Sign Out
+				</Link>
+			</Nav.Item>
+		</>
+	)
+	
+	const unauthenticatedOptions = (
+		<>
+			<Nav.Item>
+				<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+			</Nav.Item>
+			<Nav.Item>
+				<Link to='sign-in' style={linkStyle}>Sign In</Link>
+			</Nav.Item>
+			<Nav.Item>
+				<Searchbox 
+					radioValue={radioValue}
+					setRadioValue={setRadioValue}
+				/>
+			</Nav.Item>
+		</>
+	)
+	
+	const alwaysOptions = (
+		<>
+			{/* <Nav.Item>
+				<Link to='/' style={linkStyle}>
+					Home
+				</Link>
+			</Nav.Item> */}
+		</>
+	)
+
+	return(
+		<Navbar bg='primary' variant='dark' expand='md' style={navBarColor} >
 		<Navbar.Brand>
 			<Link to='/' style={linkStyle}>
 				StreamGenie
-			</Link>
+			</Link>  
 		</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
@@ -71,6 +79,8 @@ const Header = ({ user }) => (
 			</Nav>
 		</Navbar.Collapse>
 	</Navbar>
-)
+	)
+
+}
 
 export default Header
