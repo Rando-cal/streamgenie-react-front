@@ -20,6 +20,7 @@ import IndexMoviesByPlatform from './components/movies/IndexMoviesByPlatform'
 import ShowShow from './components/shows/ShowShow'
 import IndexShowsByPlatform from './components/shows/IndexShowsByPlatform'
 import SearchIndex from './components/shared/SearchIndex'
+import IndexFavorites from './components/favorites/IndexFavorites'
 // need to import everytime you want to use stylingsheet
 import './index.css'
 
@@ -33,7 +34,7 @@ const App = () => {
 	const [msgAlerts, setMsgAlerts] = useState([])
 	const [radioValue, setRadioValue] = useState('1');
 	const [searchValue, setSearchValue] = useState('')
-	const [searchIndexMovieList, setSearchIndexMovieList]= useState([])
+	const [searchIndexMovieList, setSearchIndexMovieList] = useState([])
 
 	console.log('message alerts', msgAlerts)
 	const clearUser = () => {
@@ -59,18 +60,18 @@ const App = () => {
 	return (
 		<Fragment>
 			<Header user={user}
-					radioValue={radioValue}
-					setRadioValue={setRadioValue}
-					searchValue={searchValue}
-					setSearchValue={setSearchValue}
-					searchIndexMovieList={searchIndexMovieList}
-					setSearchIndexMovieList={setSearchIndexMovieList}
+				radioValue={radioValue}
+				setRadioValue={setRadioValue}
+				searchValue={searchValue}
+				setSearchValue={setSearchValue}
+				searchIndexMovieList={searchIndexMovieList}
+				setSearchIndexMovieList={setSearchIndexMovieList}
 			/>
 			<Routes>
-				<Route path='/' element={<Home 
-											msgAlert={msgAlert} 
-											user={user}
-										/>} />
+				<Route path='/' element={<Home
+					msgAlert={msgAlert}
+					user={user}
+				/>} />
 				<Route
 					path='/sign-up'
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
@@ -106,23 +107,27 @@ const App = () => {
 					path="/movies/platform/:platId"
 					element={<IndexMoviesByPlatform user={user} msgAlert={msgAlert} />}
 				/>
-				
+
 				<Route
 					path="/shows/platform/:platId"
 					element={<IndexShowsByPlatform user={user} msgAlert={msgAlert} />}
 				/>
+				<Route
+					path="/favorites"
+					element={<IndexFavorites user={user} msgAlert={msgAlert} />}
+				/>
 
 				<Route
 					path="/searchIndex"
-					element={<SearchIndex 
-								user={user} 
-								msgAlert={msgAlert}
-								radioValue={radioValue}
-								setRadioValue={setRadioValue}
-								searchValue={searchValue}
-								setSearchValue={setSearchValue}
-								searchIndexMovieList={searchIndexMovieList}
-							/>}
+					element={<SearchIndex
+						user={user}
+						msgAlert={msgAlert}
+						radioValue={radioValue}
+						setRadioValue={setRadioValue}
+						searchValue={searchValue}
+						setSearchValue={setSearchValue}
+						searchIndexMovieList={searchIndexMovieList}
+					/>}
 				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
