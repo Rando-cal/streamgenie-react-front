@@ -34,7 +34,7 @@ export const addToFavorites = (user, addedContent) => {
         headers: {
             Authorization: `Token token=${user.token}`,
         },
-        data: { content: addedContent }
+        data: { user: user, content: addedContent }
     })
 }
 
