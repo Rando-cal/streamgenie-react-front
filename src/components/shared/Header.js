@@ -4,15 +4,17 @@ import Navbar from 'react-bootstrap/Navbar'
 import { Dropdown } from 'react-bootstrap'
 import NavLink from 'react-bootstrap/NavLink'
 import { NavItem } from 'react-bootstrap/'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Searchbox from './Searchbox'
 import { NavDropdown } from 'react-bootstrap'
+import IndexMoviesByPlatform from '../movies/IndexMoviesByPlatform'
 
 // import "../../../styles/generalStyle.css"
 const linkStyle = {
 	color: 'white',
 	textDecoration: 'none'
 }
+
 
 const navBarColor = {
 	color: 'red'
@@ -49,17 +51,38 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
+
 		<Nav.Item>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
 		</Nav.Item>
 		<NavDropdown title="Platforms">
-			<NavDropdown.Item href="/movies/US/8">Netflix</NavDropdown.Item>
-			<NavDropdown.Item href="/movies/US/9">Amazon Prime</NavDropdown.Item>
-			<NavDropdown.Item href="/movies/US/15">Hulu</NavDropdown.Item>
-			<NavDropdown.Item href="/movies/US/384">HBO Maax</NavDropdown.Item>
-			<NavDropdown.Item href="/movies/US/390">Disney+</NavDropdown.Item>
+			<NavDropdown.Item>
+				<Link to={{ pathname: '/movies/platform/8' }} >
+					Netflix
+				</Link>
+			</NavDropdown.Item>
+			<NavDropdown.Item >
+				<Link to={{ pathname: '/movies/platform/384' }} >
+					Hbo Max
+				</Link>
+			</NavDropdown.Item>
+			<NavDropdown.Item >
+				<Link to={{ pathname: '/movies/platform/119' }} >
+					Amazon Prime
+				</Link>
+			</NavDropdown.Item>
+			<NavDropdown.Item >
+				<Link to={{ pathname: '/movies/platform/15' }} >
+					Hulu
+				</Link>
+			</NavDropdown.Item>
+			<NavDropdown.Item >
+				<Link to={{ pathname: '/movies/platform/337' }} >
+					Disney+
+				</Link>
+			</NavDropdown.Item>
 		</NavDropdown>
 	</>
 )

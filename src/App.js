@@ -86,13 +86,53 @@ const App = () => {
 					element={<ShowShow user={user} msgAlert={msgAlert} />}
 				/>
 				<Route
-					path="/movies/:region/:id"
+					path="/movies/platform/:platId"
 					element={<IndexMoviesByPlatform user={user} msgAlert={msgAlert} />}
 				/>
+				{/* <Route
+					path="/movies/netflix"
+					element={<IndexMoviesByPlatform user={user} platformId={8} msgAlert={msgAlert} />}
+				/>
 				<Route
-					path="/shows/:region/:id"
+					path="/movies/disney"
+					element={<IndexMoviesByPlatform user={user} platformId={390} msgAlert={msgAlert} />}
+				/>
+				<Route
+					path="/movies/hulu"
+					element={<IndexMoviesByPlatform user={user} platformId={15} msgAlert={msgAlert} />}
+				/>
+				<Route
+					path="/movies/hbo_max"
+					element={<IndexMoviesByPlatform user={user} platformId={384} msgAlert={msgAlert} />}
+				/>
+				<Route
+					path="/movies/amazon_prime"
+					element={<IndexMoviesByPlatform user={user} platformId={9} msgAlert={msgAlert} />}
+				/>
+				<Route
+					path="/shows/platform"
 					element={<IndexShowsByPlatform user={user} msgAlert={msgAlert} />}
 				/>
+				<Route
+					path="/movies/netflix"
+					element={<IndexShowsByPlatform user={user} platformId={8} msgAlert={msgAlert} />}
+				/>
+				<Route
+					path="/movies/disney"
+					element={<IndexShowsByPlatform user={user} platformId={390} msgAlert={msgAlert} />}
+				/>
+				<Route
+					path="/movies/hulu"
+					element={<IndexShowsByPlatform user={user} platformId={15} msgAlert={msgAlert} />}
+				/>
+				<Route
+					path="/movies/hbo_max"
+					element={<IndexShowsByPlatform user={user} platformId={384} msgAlert={msgAlert} />}
+				/>
+				<Route
+					path="/movies/amazon_prime"
+					element={<IndexShowsByPlatform user={user} platformId={119} msgAlert={msgAlert} />}
+				/>*/}
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

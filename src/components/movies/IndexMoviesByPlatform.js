@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import '../../index.css'
 
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom'
 
 import { Container, Card, Button } from 'react-bootstrap'
 import LoadingScreen from '../shared/LoadingScreen'
@@ -17,14 +17,20 @@ const cardContainerStyle = {
 const region = "US"
 
 const IndexMoviesByPlatform = (props) => {
-    const { msgAlert, user, platformId } = props
+    const { msgAlert, user } = props
+    const [id, setId] = useState(null)
     const [movies, setMovies] = useState(null)
     const [error, setError] = useState(false)
 
+    //let data = useLocation()
+    const { platId } = useParams()
+    console.log("platId:", platId)
 
+    console.log("in index platform", movies)
 
     useEffect(() => {
-        getPopularMoviesByPlatform(region, platformId)
+        console.log("InuseEffect", movies)
+        getPopularMoviesByPlatform(region, platId)
             .then(res => setMovies(res.data.movies))
             .catch(err => {
                 msgAlert({
@@ -35,7 +41,7 @@ const IndexMoviesByPlatform = (props) => {
                 console.log(err)
                 setError(true)
             })
-    }, [])
+    }, [platId])
 
     if (!movies) {
         return <LoadingScreen />
