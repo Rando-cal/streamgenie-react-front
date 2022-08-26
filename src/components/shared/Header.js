@@ -17,7 +17,16 @@ const navBarColor = {
 
 
 // PAY ATTENTION TO CALLBACK FUNCTION and whether it is a () or {} -----> implicit vs explicit return
-const Header = ({ user, radioValue, setRadioValue}) => {
+const Header = 
+	({ 
+	user,
+	radioValue,
+	setRadioValue,
+	setSearchValue,
+	searchValue,
+	searchIndexMovieList,
+	setSearchIndexMovieList
+	}) => {
 
 	const authenticatedOptions = (
 		<>
@@ -46,6 +55,10 @@ const Header = ({ user, radioValue, setRadioValue}) => {
 				<Searchbox 
 					radioValue={radioValue}
 					setRadioValue={setRadioValue}
+					searchValue={searchValue}
+					setSearchValue={setSearchValue}
+					searchIndexMovieList={searchIndexMovieList}
+					setSearchIndexMovieList={setSearchIndexMovieList}
 				/>
 			</Nav.Item>
 		</>
