@@ -19,17 +19,22 @@ import IndexMoviesByPlatform from './components/movies/IndexMoviesByPlatform'
 //Show Components
 import ShowShow from './components/shows/ShowShow'
 import IndexShowsByPlatform from './components/shows/IndexShowsByPlatform'
+import SearchIndex from './components/shared/SearchIndex'
 // need to import everytime you want to use stylingsheet
 import './index.css'
+
+
+//******************************************************************************** */
+
 
 const App = () => {
 
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 	const [radioValue, setRadioValue] = useState('1');
+	const [searchValue, setSearchValue] = useState('')
+	const [searchIndexMovieList, setSearchIndexMovieList]= useState([])
 
-
-	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
 	const clearUser = () => {
 		console.log('clear user ran')
@@ -51,17 +56,15 @@ const App = () => {
 		})
 	}
 
-	if(radioValue === "1"){
-		console.log('APP: MOVIES')
-	} else if (radioValue === "2"){
-		console.log('APP: TV!!')
-	}
-
 	return (
 		<Fragment>
 			<Header user={user}
 					radioValue={radioValue}
 					setRadioValue={setRadioValue}
+					searchValue={searchValue}
+					setSearchValue={setSearchValue}
+					searchIndexMovieList={searchIndexMovieList}
+					setSearchIndexMovieList={setSearchIndexMovieList}
 			/>
 			<Routes>
 				<Route path='/' element={<Home 
@@ -103,50 +106,24 @@ const App = () => {
 					path="/movies/platform/:platId"
 					element={<IndexMoviesByPlatform user={user} msgAlert={msgAlert} />}
 				/>
-				{/* <Route
-					path="/movies/netflix"
-					element={<IndexMoviesByPlatform user={user} platformId={8} msgAlert={msgAlert} />}
-				/>
+				
 				<Route
-					path="/movies/disney"
-					element={<IndexMoviesByPlatform user={user} platformId={390} msgAlert={msgAlert} />}
-				/>
-				<Route
-					path="/movies/hulu"
-					element={<IndexMoviesByPlatform user={user} platformId={15} msgAlert={msgAlert} />}
-				/>
-				<Route
-					path="/movies/hbo_max"
-					element={<IndexMoviesByPlatform user={user} platformId={384} msgAlert={msgAlert} />}
-				/>
-				<Route
-					path="/movies/amazon_prime"
-					element={<IndexMoviesByPlatform user={user} platformId={9} msgAlert={msgAlert} />}
-				/>
-				<Route
-					path="/shows/platform"
+					path="/shows/platform/:platId"
 					element={<IndexShowsByPlatform user={user} msgAlert={msgAlert} />}
 				/>
+
 				<Route
-					path="/movies/netflix"
-					element={<IndexShowsByPlatform user={user} platformId={8} msgAlert={msgAlert} />}
+					path="/searchIndex"
+					element={<SearchIndex 
+								user={user} 
+								msgAlert={msgAlert}
+								radioValue={radioValue}
+								setRadioValue={setRadioValue}
+								searchValue={searchValue}
+								setSearchValue={setSearchValue}
+								searchIndexMovieList={searchIndexMovieList}
+							/>}
 				/>
-				<Route
-					path="/movies/disney"
-					element={<IndexShowsByPlatform user={user} platformId={390} msgAlert={msgAlert} />}
-				/>
-				<Route
-					path="/movies/hulu"
-					element={<IndexShowsByPlatform user={user} platformId={15} msgAlert={msgAlert} />}
-				/>
-				<Route
-					path="/movies/hbo_max"
-					element={<IndexShowsByPlatform user={user} platformId={384} msgAlert={msgAlert} />}
-				/>
-				<Route
-					path="/movies/amazon_prime"
-					element={<IndexShowsByPlatform user={user} platformId={119} msgAlert={msgAlert} />}
-				/>*/}
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

@@ -7,12 +7,20 @@ import './searchbox.scss'
 import RadioToggle from './RadioToggle'
 import { getMoviesByTitle } from '../../api/movies.js'
 import { getShowsByTitle } from '../../api/shows.js'
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 
-
-const Searchbox = ({radioValue, setRadioValue}) => {
+// all the prop values
+const Searchbox =  ({
+					radioValue, 
+					setRadioValue,
+					searchValue,
+					setSearchValue,
+					searchIndexMovieList,
+					setSearchIndexMovieList
+					}) => {
 	
-	const [searchValue, setSearchValue] = useState('')
+
 	const [user, setUser] = useState('')
 	const [toggleRadioValue, setToggleRadioValue]= useState('')
 	const [apiResList, setApiResList] = useState([])
@@ -23,33 +31,24 @@ const Searchbox = ({radioValue, setRadioValue}) => {
 		setToggleRadioValue(setToggleRadioValue)
 	},[])
 
-	// useEffect(() => {
-	// 	setUser(user)
-	// },[])
-
-	// // Prior version to search for titles
-	// const onSearch = (event) => {
-	// 	event.preventDefault()		
-		
-	// 	searchIt(user,searchValue)
-	// 	.then((res) => (console.log('res',res)))
-	// 	.catch((error) => {console.log(error)})	
-	// }
-
 	const onSearch = (event) => {
 	event.preventDefault()
-	
-		// 1 movie, 2 tv
+
+		// 1 movie, 2 tv  . To drill down its res.data.movies
 		if(radioValue === "1"){
 			getMoviesByTitle(region,searchValue,user)
-			.then((res) => { console.log('movieRES####',res);})
+			.then((res) => { setSearchIndexMovieList(res.data.movies)})
 			.catch((error) => {console.log(error)})
+			//<Navigate
 		} else if(radioValue === "2"){
 			getShowsByTitle(region,searchValue,user)
 			.then((res) => { console.log('TvRES####',res);})
 			.catch((error) => {console.log(error)})
 		}
+	
 	}	
+
+	// console.log('SEARCHBOX:searchIndexMovieList:',searchIndexMovieList);
 	
 	return (		
 		<div className="searchBarContainer" >
@@ -70,7 +69,15 @@ const Searchbox = ({radioValue, setRadioValue}) => {
 				radioValue={radioValue}
 				setRadioValue={setRadioValue}
 			/>
-		</div>		
+
+			{/* <Routes>
+			<Route
+				path='/searchIndex'
+				element={<Navigate to='/searchIndex/'/>}
+			/>
+			</Routes> */}
+		</div>	
+		
 	)
 }
 
