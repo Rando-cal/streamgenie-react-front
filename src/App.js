@@ -113,7 +113,7 @@ const App = () => {
 				/>
 
 				<Route
-					path="/searchIndex"
+					path="/searchIndex/"
 					element={<SearchIndex 
 								user={user} 
 								msgAlert={msgAlert}

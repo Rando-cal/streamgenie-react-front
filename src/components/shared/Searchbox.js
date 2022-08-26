@@ -7,7 +7,7 @@ import './searchbox.scss'
 import RadioToggle from './RadioToggle'
 import { getMoviesByTitle } from '../../api/movies.js'
 import { getShowsByTitle } from '../../api/shows.js'
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 
 
 // all the prop values
@@ -19,6 +19,8 @@ const Searchbox =  ({
 					searchIndexMovieList,
 					setSearchIndexMovieList
 					}) => {
+
+	const navigate = useNavigate()
 	
 
 	const [user, setUser] = useState('')
@@ -39,12 +41,15 @@ const Searchbox =  ({
 			getMoviesByTitle(region,searchValue,user)
 			.then((res) => { setSearchIndexMovieList(res.data.movies)})
 			.catch((error) => {console.log(error)})
-			//<Navigate
+			
 		} else if(radioValue === "2"){
 			getShowsByTitle(region,searchValue,user)
 			.then((res) => { console.log('TvRES####',res);})
 			.catch((error) => {console.log(error)})
 		}
+
+
+		navigate('/searchIndex/')
 	
 	}	
 

@@ -6,6 +6,7 @@ import RadioToggle from './RadioToggle'
 import { getMoviesByTitle } from '../../api/movies.js'
 import { getShowsByTitle } from '../../api/shows.js'
 import Cards from '../shared/Cards/Cards'
+import {useParams} from 'react-router-dom'
 
 
 
@@ -21,7 +22,12 @@ const SearchIndex = ({user,
     
     // useEffect here of Whatever,then put searchIndexMovieList in the dependency
     // array to update searchIndexMovieList
+	useEffect(() => {
+		console.log(searchIndexMovieList)
+	},[searchIndexMovieList])
     
+    const {term} = useParams()
+    // do
 
     return(
         <>
