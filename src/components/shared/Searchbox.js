@@ -9,10 +9,19 @@ import { getMoviesByTitle } from '../../api/movies.js'
 import { getShowsByTitle } from '../../api/shows.js'
 
 
+
 const Searchbox = ({radioValue, setRadioValue}) => {
 	
 	const [searchValue, setSearchValue] = useState('')
 	const [user, setUser] = useState('')
+	const [toggleRadioValue, setToggleRadioValue]= useState('')
+	const [apiResList, setApiResList] = useState([])
+
+	let region = "US"
+
+	useEffect(() => {
+		setToggleRadioValue(setToggleRadioValue)
+	},[])
 
 	// useEffect(() => {
 	// 	setUser(user)
@@ -28,13 +37,20 @@ const Searchbox = ({radioValue, setRadioValue}) => {
 	// }
 
 	const onSearch = (event) => {
-	event.preventDefault()		
+	event.preventDefault()
 	
-	searchIt(user,searchValue)
-	.then((res) => (console.log('res',res)))
-	.catch((error) => {console.log(error)})	
-	}
-
+		// 1 movie, 2 tv
+		if(radioValue === "1"){
+			getMoviesByTitle(region,searchValue,user)
+			.then((res) => { console.log('movieRES####',res);})
+			.catch((error) => {console.log(error)})
+		} else if(radioValue === "2"){
+			getShowsByTitle(region,searchValue,user)
+			.then((res) => { console.log('TvRES####',res);})
+			.catch((error) => {console.log(error)})
+		}
+	}	
+	
 	return (		
 		<div className="searchBarContainer" >
 			<Form onSubmit={onSearch}> 

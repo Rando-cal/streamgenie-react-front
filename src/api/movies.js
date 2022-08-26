@@ -20,7 +20,7 @@ export const getPopularMoviesByPlatform = (region, platformId) => {
 //READ => INDEX SEARCH BY TITLE IN USER'S REGION
 export const getMoviesByTitle = (region, title) => {
     return axios({
-        url: `${apiUrl}/movies/${region}/${title}`,
+        url: `${apiUrl}/search/movies/${region}/${title}`,
         method: 'GET'
     })
 }
