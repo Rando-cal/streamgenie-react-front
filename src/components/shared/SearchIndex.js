@@ -23,8 +23,10 @@ const SearchIndex = ({user,
     // useEffect here of Whatever,then put searchIndexMovieList in the dependency
     // array to update searchIndexMovieList
 	useEffect(() => {
-		console.log(searchIndexMovieList)
+		console.log("For useeffect in SearchIndex to force statechange")
 	},[searchIndexMovieList])
+
+    console.log('SearchIndex.js:searchIndexMovieList:',searchIndexMovieList);
     
     const {term} = useParams()
     // do
@@ -32,8 +34,7 @@ const SearchIndex = ({user,
     return(
         <>
             <div>
-                <Cards topTitlesList={searchIndexMovieList}/>
-
+                <Cards topTitlesList={searchIndexMovieList} radioValue={radioValue}/>
             </div>
         </>
     )

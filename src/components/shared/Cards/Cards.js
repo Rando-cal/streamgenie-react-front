@@ -6,10 +6,9 @@ import './Cards.css'
 import { v4 as uuid } from 'uuid'
 import Card from 'react-bootstrap/Card';
 
-const Cards = ({topTitlesList}) => {
+const Cards = ({topTitlesList,radioValue}) => {
 
-    console.log('topTitlesList from PROPS:',topTitlesList);
-    // console.log('~~~~~~~~~~~~~~~~~~~~~~:',topTitlesList[0].poster_path);
+    console.log('Cards.js:Prop:topTitlesList:',topTitlesList);
 
     const id = uuid()
 
@@ -23,16 +22,34 @@ const Cards = ({topTitlesList}) => {
 
     const backDropUrl = "https://image.tmdb.org/t/p/w500/"
 
-    const titleCards = topTitlesList.map((aTitle) => (
+    let titleCards
+
+    // 1 movies, 2 tv
+    if(radioValue === '1'){
+        titleCards = topTitlesList.map((aTitle) => (
  
-        <Link to={`/movie/${aTitle.id}`}>
-        <div className= "width16" key={aTitle.id}>
-                <a>
-                 <img className= "width16 p-20px" src={backDropUrl + aTitle.poster_path} />
-                </a> 
-        </div>   
-        </Link>
-    ))
+            <Link to={`/movie/${aTitle.id}`}>
+            <div className= "width16" key={aTitle.id}>
+                    <a>
+                     <img className= "width16 p-20px" src={backDropUrl + aTitle.poster_path} />
+                    </a> 
+            </div>   
+            </Link>
+        ))
+    } else if(radioValue === '2'){
+        titleCards = topTitlesList.map((aTitle) => (
+ 
+            <Link to={`/movie/${aTitle.id}`}>
+            <div className= "width16" key={aTitle.id}>
+                    <a>
+                     <img className= "width16 p-20px" src={backDropUrl + aTitle.poster_path} />
+                    </a> 
+            </div>   
+            </Link>
+        ))
+    }
+
+
 
     // console.log('titleCards',titleCards);
 

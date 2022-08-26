@@ -7,7 +7,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 const RadioToggle = ({user, onSearch,radioValue,setRadioValue}) => {
 
         const [checked, setChecked] = useState(false);
-        console.log('radioValue',radioValue);
+        console.log('RadioToggle.js:radiovalue:',radioValue);
       
         const radios = [
           { name: 'Movies', value: '1' },

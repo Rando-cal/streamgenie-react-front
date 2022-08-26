@@ -43,11 +43,11 @@ const Searchbox =  ({
 			.catch((error) => {console.log(error)})
 			
 		} else if(radioValue === "2"){
+			console.log('In Searchbox.js:onSearch funct: radio2');
 			getShowsByTitle(region,searchValue,user)
-			.then((res) => { console.log('TvRES####',res);})
+			.then((res) => { setSearchIndexMovieList(res.data.shows)})
 			.catch((error) => {console.log(error)})
 		}
-
 
 		navigate('/searchIndex/')
 	
