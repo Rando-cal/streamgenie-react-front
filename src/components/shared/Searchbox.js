@@ -34,23 +34,27 @@ const Searchbox =  ({
 	},[])
 
 	const onSearch = (event) => {
+	console.log('IN Searchbox.js:onSearcH!!');
 	event.preventDefault()
 
 		// 1 movie, 2 tv  . To drill down its res.data.movies
 		if(radioValue === "1"){
+			console.log('IN Searchbox.js:onSearch:If === 1');		
 			getMoviesByTitle(region,searchValue,user)
 			.then((res) => { setSearchIndexMovieList(res.data.movies)})
 			.catch((error) => {console.log(error)})
+		
 			
 		} else if(radioValue === "2"){
+			console.log('IN Searchbox.js:onSearch:If === 2');
 			getShowsByTitle(region,searchValue,user)
 			.then((res) => { setSearchIndexMovieList(res.data.movies)})
 			.catch((error) => {console.log(error)})
 		}
 
 
-		navigate('/searchIndex/')
-	
+
+		navigate('/searchIndex/')	
 	}	
 
 	// console.log('SEARCHBOX:searchIndexMovieList:',searchIndexMovieList);

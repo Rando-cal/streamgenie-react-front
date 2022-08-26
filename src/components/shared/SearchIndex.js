@@ -21,7 +21,7 @@ const SearchIndex = ({user,
     // useEffect here of Whatever,then put searchIndexMovieList in the dependency
     // array to update searchIndexMovieList
 	useEffect(() => {
-		console.log(searchIndexMovieList)
+		console.log("in SearchIndex.js")
 	},[searchIndexMovieList])
     
     // ??
