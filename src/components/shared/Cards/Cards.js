@@ -6,18 +6,11 @@ import './Cards.css'
 import { v4 as uuid } from 'uuid'
 import Card from 'react-bootstrap/Card';
 
-<<<<<<< HEAD
 // radioValue of 1 = Movies, 2 = TV
-const Cards = ({topTitlesList,radioValue}) => {
 
-    console.log('$@$@$@  topTitlesList from PROPS:',topTitlesList);
-    // console.log('~~~~~~~~~~~~~~~~~~~~~~:',topTitlesList[0].poster_path);
-    console.log('CARDS.js:cards:radioValue:',radioValue);
-=======
 const Cards = ({topTitlesList,radioValue}) => {
 
     console.log('Cards.js:Prop:topTitlesList:',topTitlesList);
->>>>>>> searchIndex
 
     const id = uuid()
 
