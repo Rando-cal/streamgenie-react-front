@@ -12,15 +12,13 @@ import IndexMoviesByPlatform from '../movies/IndexMoviesByPlatform'
 // import "../../../styles/generalStyle.css"
 const linkStyle = {
 	color: 'white',
-	textDecoration: 'none'
-}
+	textDecoration: 'none'}
 
 
 const navBarColor = {
 	color: 'red'
 	// color: '#191308' 
 }
-
 
 // PAY ATTENTION TO CALLBACK FUNCTION and whether it is a () or {} -----> implicit vs explicit return
 const Header =
