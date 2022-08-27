@@ -22,8 +22,6 @@ const IndexFavorites = (props) => {
     const [favorites, setFavorites] = useState(null)
     const [error, setError] = useState(false)
 
-
-
     useEffect(() => {
 
         getFavorites(user)
