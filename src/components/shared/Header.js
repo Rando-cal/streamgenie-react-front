@@ -57,16 +57,7 @@ const Header =
 			<Nav.Item>
 				<Link to='sign-in' style={linkStyle}>Sign In</Link>
 			</Nav.Item>
-			<Nav.Item>
-				<Searchbox 
-					radioValue={radioValue}
-					setRadioValue={setRadioValue}
-					searchValue={searchValue}
-					setSearchValue={setSearchValue}
-					searchIndexMovieList={searchIndexMovieList}
-					setSearchIndexMovieList={setSearchIndexMovieList}
-				/>
-			</Nav.Item>
+			
 		</>
 	)
 	
@@ -74,9 +65,9 @@ const alwaysOptions = (
 	<>
 
 		<Nav.Item>
-			<Link to='/' style={linkStyle}>
+			{/* <Link to='/' style={linkStyle}>
 				Home
-			</Link>
+			</Link> */}
 		</Nav.Item>
 		<NavDropdown title="Platforms">
 			<NavDropdown.Item>
@@ -105,6 +96,16 @@ const alwaysOptions = (
 				</Link>
 			</NavDropdown.Item>
 		</NavDropdown>
+		<Nav.Item>
+				<Searchbox 
+					radioValue={radioValue}
+					setRadioValue={setRadioValue}
+					searchValue={searchValue}
+					setSearchValue={setSearchValue}
+					searchIndexMovieList={searchIndexMovieList}
+					setSearchIndexMovieList={setSearchIndexMovieList}
+				/>
+			</Nav.Item>
 	</>
 )
 
