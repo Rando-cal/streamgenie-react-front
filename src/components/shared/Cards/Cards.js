@@ -31,9 +31,9 @@ const Cards = ({topTitlesList,radioValue}) => {
         titleCards = topTitlesList.map((aTitle) => (
  
             <Link to={`/movie/${aTitle.id}`}>
-            <div className= "width16" key={aTitle.id}>
+            <div className= "width17rem" key={aTitle.id}>
                     <a>
-                     <img className= "width16 p-20px" src={backDropUrl + aTitle.poster_path} />
+                     <img className= "width17rem p-20px" src={backDropUrl + aTitle.poster_path} />
                     </a> 
             </div>   
             </Link>
@@ -41,10 +41,10 @@ const Cards = ({topTitlesList,radioValue}) => {
     } else if(radioValue === '2'){
         titleCards = topTitlesList.map((aTitle) => (
  
-            <Link to={`/movie/${aTitle.id}`}>
-            <div className= "width16" key={aTitle.id}>
+            <Link to={`/show/${aTitle.id}`}>
+            <div className= "width17rem" key={aTitle.id}>
                     <a>
-                     <img className= "width16 p-20px" src={backDropUrl + aTitle.poster_path} />
+                     <img className= "width17rem p-20px" src={backDropUrl + aTitle.poster_path} />
                     </a> 
             </div>   
             </Link>

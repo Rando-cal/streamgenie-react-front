@@ -9,9 +9,14 @@ import { getOneShow } from '../../api/shows.js'
 import messages from '../shared/AutoDismissAlert/messages'
 import { addToFavorites, removeFromFavorites } from "../../api/favorites";
 
+import './ShowShow.css'
+
 //the movie's id comes from the 3rd party API
 
 const ShowShow = (props) => {
+
+    const backDropUrl = "https://image.tmdb.org/t/p/w500/"
+
     const [show, setShow] = useState(null)
 
     const { id } = useParams()
@@ -85,11 +90,21 @@ const ShowShow = (props) => {
 
     return (
         <Container className="fluid">
-            <Card>
-                <Card.Header>{show.original_title}</Card.Header>
-            </Card>
-        </Container>
+        <Card>
+            <Card.Header>{show.original_title}</Card.Header>
+            <Card.Body><img src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}></img></Card.Body>
+            <Card.Footer>
+                <Button onClick={() => { addToShowToFavorites() }}
+                    className="m-2">
+                    Add To Favorites
+                </Button>
+            </Card.Footer>
+        </Card>
+    </Container>
     )
+
+
+
 }
 
 export default ShowShow

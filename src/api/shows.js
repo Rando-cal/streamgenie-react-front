@@ -27,6 +27,9 @@ export const getShowsByTitle = (region, title) => {
 
 // READ => SHOW SPECIFIC SHOW BY ID. ALSO RETURNS PLATFORMS IT IS AVAILABLE ON
 export const getOneShow = (id) => {
+    let urlToBackend= (`${apiUrl}/show/${id}`)
+    console.log('in Shows.js:getOneshow:url:',urlToBackend);
+
     return axios(`${apiUrl}/show/${id}`)
 }
 
