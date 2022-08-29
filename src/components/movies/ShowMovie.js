@@ -158,7 +158,7 @@ const ShowMovie = (props) => {
     }
 
     return (
-        <Container className="fluid">
+        <Container className="fluid blackBG">
             <Card>
                 <Card.Header>{movie.title}</Card.Header>
                 <Card.Body><img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img></Card.Body>

@@ -14,12 +14,6 @@ const linkStyle = {
 	color: 'white',
 	textDecoration: 'none'}
 
-
-const navBarColor = {
-	color: 'red'
-	// color: '#191308' 
-}
-
 // PAY ATTENTION TO CALLBACK FUNCTION and whether it is a () or {} -----> implicit vs explicit return
 const Header =
 	({
@@ -113,7 +107,7 @@ const Header =
 		)
 
 		return (
-			<Navbar bg='primary' variant='dark' expand='md' style={navBarColor} >
+			<Navbar bg='primary' variant='dark' expand='md'  >
 				<Nav className="container-fluid">
 					<Navbar.Brand>
 						<Link className="margin-10px" to='/' style={linkStyle}>

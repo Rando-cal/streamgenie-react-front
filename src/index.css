@@ -21,6 +21,16 @@ code {
   width: 100px
 }
 
+.width17rem{
+  width: 17rem;
+}
+
+
+.p-20px{
+  padding: 20px;
+}
+
+
 
 /* make the 'negative space' black */
 html{
@@ -32,6 +42,9 @@ html{
   color:white;
 }
 
+.blackBG{
+  background-color: black;
+}
 
 .margin-10px{
   margin:10px
