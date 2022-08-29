@@ -195,13 +195,19 @@ const ShowMovie = (props) => {
     const whereStreaming = (term) => {
 
         if (term == 'name') {
-            const providerName = providers.map((provider, index) => {
-                return provider.provider_name
-            })
-            if (!providerName) {
-                return "Looks like this title is not streaming on any subscriptions at the moment."
-            } else {
-                return providerName
+            if (providers.length == 0) {
+                return "No available streaming data."
+            }
+            else {
+                const providerName = providers.map((provider, index) => {
+                    return provider.provider_name
+                })
+
+                if (!providerName) {
+                    return "Looks like this title is not streaming on any subscriptions at the moment."
+                } else {
+                    return providerName
+                }
             }
         }
         else {

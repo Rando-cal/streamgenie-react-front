@@ -5,42 +5,141 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import { Container, Card, Button } from 'react-bootstrap'
 import LoadingScreen from '../shared/LoadingScreen'
-import { getOneShow } from '../../api/shows.js'
+import { getOneShow } from "../../api/shows";
 import messages from '../shared/AutoDismissAlert/messages'
-import { addToFavorites, removeFromFavorites } from "../../api/favorites";
+import { getFavorites, addToFavorites, removeFromFavorites } from "../../api/favorites";
 
-import './ShowShow.css'
 
-//the movie's id comes from the 3rd party API
 
 const ShowShow = (props) => {
-
-    const backDropUrl = "https://image.tmdb.org/t/p/w500/"
-
     const [show, setShow] = useState(null)
+    const [providers, setProviders] = useState(null)
+    const [favorites, setFavorites] = useState([])
+    const [areLoggedIn, setareLoggedIn] = useState(true)
+    const [updatedFavorites, setUpdatedFavorites] = useState(false)
 
     const { id } = useParams()
     const navigate = useNavigate()
     const { user, msgAlert } = props
+    // let areLoggedIn = false
+    if (!user) {
+        setareLoggedIn(false)
+    }
+
+
+
 
     useEffect(() => {
+
         getOneShow(id)
-            .then(res => { return setShow(res.data.show), console.log("this is res.data.show", res.data.show) })
+            .then(res => {
+                const theShow = res.data
+                // console.log("1 show after getOneshow:", theShow)
+                getFavorites(user)
+                    .then(res => {
+                        // console.log("2 theShow after getFavorites:", theShow)
+                        // console.log("3 favorites after getFavorites:", res.data.favorites)
+                        setFavorites(res.data.favorites)
+                        setShow(theShow.show)
+                        setProviders(theShow.providers)
+                        console.log("4 Show after setting Show:", show)
+                        console.log("5 providers after setting providers:", providers)
+                    })
+                    .catch(err => {
+                        msgAlert({
+                            heading: 'Error getting favorites',
+                            message: messages.getContentFailure,
+                            variant: 'danger'
+                        })
+                        navigate('/')
+                        //navigate back to the home page if there's an error fetching
+                    })
+            })
             .catch(err => {
                 msgAlert({
-                    heading: 'Error getting show',
+                    heading: 'Error getting favorites',
                     message: messages.getContentFailure,
                     variant: 'danger'
                 })
                 navigate('/')
                 //navigate back to the home page if there's an error fetching
             })
-    }, [])
+
+    }, [updatedFavorites])
 
 
-    //function to remove show from the favorites list
+
+
+    //Function to check if movie is in favorites
+    //first we map favorites to create an array of IDs in favorites CHECK
+    //then we compare movie.contentId to [favorites.contentID]
+    //return true is there is a match, false if not
+    // console.log("This is favorites:", favorites)
+    let favoritesIdArray = []
+    if (favorites !== [7777777]) {
+        favoritesIdArray = favorites.map((favorites) => {
+            return favorites.contentId
+        })
+        // console.log("This is favoritesIdArray:", favoritesIdArray)
+        // console.log("this is movie.contentId:", movie.contentId)
+
+    }
+
+    //UNCOMMENT
+    const checkFavorites = () => {
+        if (favoritesIdArray.includes(show.contentId)) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+
+    //Function to split year from show.release_date
+    //UNCOMMENT
+    const year = () => {
+        const split_date = show.release_date.split('-')
+        return split_date[0]
+    }
+
+
+
+    // console.log("this is movie!!!", movie)
+    // const year = movie.release_date.split('-')
+    // console.log("this is year!!!", year[0])
+
+    //function to show the average
+    // UNCOMMENT
+    const rating = () => {
+        const roundedRating = Math.round(show.vote_average * 10) / 10
+        return `${roundedRating}/10`
+    }
+
+    //Function to map over genres and create an array of strings
+    // UNCOMMENT
+    // console.log("movie:", movie)
+    // console.log("movie.genres:", movie.genres)
+
+    const genresList = () => {
+        const list = show && show.genres.map((genre, index) => (
+            <li key={index}>
+                {genre.name}
+            </li>
+        ))
+    }
+
+    // const genresList = movie && movie.genres.map((genre, index) => (
+    //     <li key={index}>
+    //         {genre.name}
+    //     </li>
+    // ))
+
+    //function to remove movie from the favorites list
     const removeShowFromFavorites = () => {
-        removeFromFavorites(user, show.id)
+        // console.log("remove function")
+        // console.log("show:", show)
+        // console.log("show.contentId:", show.contentId)
+        removeFromFavorites(user, show.contentId)
             // on success send a success message
             .then(() => {
                 msgAlert({
@@ -50,7 +149,10 @@ const ShowShow = (props) => {
                 })
             })
             // then navigate to index
-            .then(() => { navigate('/') })
+            .then(() => {
+                setUpdatedFavorites((prevFavorites) => (
+                    !prevFavorites))
+            })
             // on failure send a failure message
             .catch(err => {
                 msgAlert({
@@ -62,8 +164,37 @@ const ShowShow = (props) => {
     }
 
 
-    //function to add show to favorites
-    const addToShowToFavorites = () => {
+
+    //Function for where is it streaming
+    // UNCOMMENT
+    const whereStreaming = (term) => {
+
+        if (term == 'name') {
+            if (providers.length == 0) {
+                return "No available streaming data."
+            }
+            else {
+                const providerName = providers.map((provider, index) => {
+                    return provider.provider_name
+                })
+
+                if (!providerName) {
+                    return "Looks like this title is not streaming on any subscriptions at the moment."
+                } else {
+                    return providerName
+                }
+            }
+        }
+        else {
+            const providerLogo = providers.map((provider, index) => {
+                return provider.logo_path
+            })
+        }
+
+    }
+
+    //function to add movie to favorites
+    const addShowToFavorites = () => {
         addToFavorites(user, show)
             .then(() => {
                 msgAlert({
@@ -73,38 +204,65 @@ const ShowShow = (props) => {
                 })
             })
 
-            .then(() => { navigate('/') })
+            .then(() => {
+                setUpdatedFavorites((prevFavorites) => (
+                    !prevFavorites))
+            })
 
             .catch(err => {
                 msgAlert({
-                    heading: 'Error adding movie to favorites',
+                    heading: 'Error adding show to favorites',
                     message: messages.removeContentFailure,
                     variant: 'danger'
                 })
             })
     }
 
-    if (!show) {
+
+
+    if (!show || !providers || !favorites) {
         return <LoadingScreen />
     }
 
     return (
         <Container className="fluid">
-        <Card>
-            <Card.Header>{show.original_title}</Card.Header>
-            <Card.Body><img src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}></img></Card.Body>
-            <Card.Footer>
-                <Button onClick={() => { addToShowToFavorites() }}
-                    className="m-2">
-                    Add To Favorites
-                </Button>
-            </Card.Footer>
-        </Card>
-    </Container>
+            <Card>
+                <Card.Header>{show.title}</Card.Header>
+                <Card.Body>
+                    <div class="poster">
+                        <img src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}></img>
+                    </div>
+                    <div class="infoGrid">
+                        <h2>{show.title}</h2> <p>{year()}</p>
+                        {/* <img src={`https://image.tmdb.org/t/p/w500${whereStreaming()}`}></img> */}
+                        <h4>Available for streaming on: {whereStreaming('name')}</h4>
+                        <p>{show.overview}</p>
+                        <p>{rating()}</p>
+                        <ul>
+                            {genresList()}
+                        </ul>
+                        <p>{show.number_of_seasons} Seasons</p>
+                    </div>
+
+                </Card.Body>
+                <Card.Footer>
+
+
+                    {(checkFavorites())
+                        ?
+                        <Button onClick={() => { removeShowFromFavorites() }}
+                            className="m-2">
+                            Remove From Favorites
+                        </Button>
+                        :
+                        <Button onClick={() => { addShowToFavorites() }}
+                            className="m-2">
+                            Add To Favorites
+                        </Button>}
+                </Card.Footer>
+            </Card>
+        </Container>
     )
-
-
-
 }
 
 export default ShowShow

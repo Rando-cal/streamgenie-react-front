@@ -12,7 +12,8 @@ import IndexMoviesByPlatform from '../movies/IndexMoviesByPlatform'
 // import "../../../styles/generalStyle.css"
 const linkStyle = {
 	color: 'white',
-	textDecoration: 'none'}
+	textDecoration: 'none'
+}
 
 // PAY ATTENTION TO CALLBACK FUNCTION and whether it is a () or {} -----> implicit vs explicit return
 // Don't use Nav.Link - it breaks them...
@@ -39,28 +40,6 @@ const Header =
 						Sign Out
 					</Link>
 				</Nav.Item>
-			</>
-		)
-
-		const unauthenticatedOptions = (
-			<>
-												{/* this changes it a bit from ms-auto to ml-auto */}
-												{/* my-2 my-sm-0 in Bootstrap ?? */}
-					<Nav.Item className="nav-item ms-auto">
-						<li className="nav-item">
-						<Link className="margin-10px nav-link " to='sign-up' style={linkStyle}>Sign Up</Link>
-						</li>
-					</Nav.Item>
-					<Nav.Item class="nav-item ">
-						<Link className="margin-10px nav-link" to='sign-in' style={linkStyle}>Sign In</Link>
-					</Nav.Item>
-
-			</>
-		)
-
-		const alwaysOptions = (
-			<>
-
 				<Nav.Item>
 					<Link className="margin-10px nav-link" to='/favorites' style={linkStyle}>
 						Favorites
@@ -94,16 +73,34 @@ const Header =
 					</NavDropdown.Item>
 				</NavDropdown>
 				<Nav.Item>
-				<Searchbox 
-					 
-					radioValue={radioValue}
-					setRadioValue={setRadioValue}
-					searchValue={searchValue}
-					setSearchValue={setSearchValue}
-					searchIndexMovieList={searchIndexMovieList}
-					setSearchIndexMovieList={setSearchIndexMovieList}
-				/>
-			</Nav.Item>
+					<Searchbox
+						radioValue={radioValue}
+						setRadioValue={setRadioValue}
+						searchValue={searchValue}
+						setSearchValue={setSearchValue}
+						searchIndexMovieList={searchIndexMovieList}
+						setSearchIndexMovieList={setSearchIndexMovieList}
+					/>
+				</Nav.Item>
+			</>
+		)
+
+		const unauthenticatedOptions = (
+			<>
+				<Nav.Item>
+					<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+				</Nav.Item>
+				<Nav.Item>
+					<Link to='sign-in' style={linkStyle}>Sign In</Link>
+				</Nav.Item>
+
+			</>
+		)
+
+		const alwaysOptions = (
+			<>
+
+
 			</>
 		)
 
