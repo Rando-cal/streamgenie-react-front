@@ -105,7 +105,7 @@ const Header =
 		)
 
 		return (
-			<Navbar bg='primary' variant='dark' expand='md'  >
+			<Navbar  variant='dark' expand='md' className="nearBlackColor">
 				<Nav className="container-fluid">
 					<Navbar.Brand>
 						<Link className="margin-10px" to='/' style={linkStyle}>
@@ -116,7 +116,7 @@ const Header =
 					<Navbar.Collapse id='basic-navbar-nav'>
 						<Nav className='container-fluid ml-auto'>
 							{user && (
-								<span className='navbar-text mr-2'>Welcome, {user.userName}</span>
+								<span className='navbar-text mr-2'>{user.userName}</span>
 							)}
 							{alwaysOptions}
 							{user ? authenticatedOptions : unauthenticatedOptions}

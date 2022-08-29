@@ -43,13 +43,31 @@ html {
   color: white;
 }
 
+.blackBG{
+  background-color: black;
+}
+
+.nearBlackColor{
+  background-color:  #171717;
+}
+
+.grayBlueColorBG{
+ background-color: #677DB7;
+}
+
+.grayBlueColor{
+  color: #677DB7;
+ }
+
+.height30px{
+  height: 30px;
+}
+
 .poster {
   display: inline;
 }
 
-.blackBG{
-  background-color: black;
-}
+
 
 .margin-10px{
   margin:10px

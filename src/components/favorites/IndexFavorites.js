@@ -12,7 +12,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 const cardContainerStyle = {
     display: 'flex',
     flexFlow: 'row wrap',
-    justifyContent: 'center'
+    justifyContent: 'center'    
 }
 const region = "US"
 
@@ -43,17 +43,21 @@ const IndexFavorites = (props) => {
     console.log("favorites:", favorites)
     const favoriteCards = favorites.map((favorite, index) => (
         <Link  to={`/${favorite.type}/${favorite.contentId}`} key={index}>
-            <Card >
-                <Card.Body>
-                    <img src={`https://image.tmdb.org/t/p/w500${favorite.poster_path}`} alt={favorite.title}></img>
-                </Card.Body>
-            </Card>
+            
+            <div className= "BG-black">
+                <a>
+                    <img className= "width17rem p-20px" src={`https://image.tmdb.org/t/p/w500${favorite.poster_path}`} alt={favorite.title}></img>
+                </a>
+            </div>
+            
         </Link>
     ))
 
     return (
-        <div style={cardContainerStyle}>
-            {favoriteCards}
+        <div className="blackBG">
+            <div style={cardContainerStyle}>
+                {favoriteCards}
+            </div>
         </div>
     )
 }

@@ -19,6 +19,7 @@ const RadioToggle = ({user, onSearch,radioValue,setRadioValue}) => {
             <ButtonGroup className="marginL-20px">
               {radios.map((radio, idx) => (
                 <ToggleButton
+                  className = "btn-sm grayBlueColor height30px " 
                   key={idx}
                   id={`radio-${idx}`}
                   type="radio"

@@ -57,7 +57,7 @@ const Cards = ({topTitlesList,radioValue}) => {
             <Link to={`/movie/${aTitle.id}`}>
             <div className= "width17rem" key={aTitle.id}>
                     <a>
-                     <img className= "width17rem p-20px" src={backDropUrl + aTitle.poster_path} />
+                        <img className= "width17rem p-20px" src={backDropUrl + aTitle.poster_path} />
                     </a> 
             </div>   
             </Link>
