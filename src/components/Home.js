@@ -21,6 +21,8 @@ const Home = ({ user,radioValue,setRadioValue }) => {
 		.catch((error)=> {console.log(error)})
 	},[])
 
+	console.log('HOME.JS:topTitlesList:',topTitlesList);
+
 	return (		
 		<>
 			<Cards topTitlesList={topTitlesList}/>
