@@ -1,15 +1,10 @@
-// SCOPE is for whole page default style
-
-
-// overwrite theme vars
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Inter&family=M+PLUS+1p:wght@300&family=Poiret+One&family=Poppins:wght@500;600;700&family=Source+Sans+Pro&display=swap');
 
-// scss
 $primary : #171717;
 $secondary: #677DB7;
 $danger: #9CA3DB;
 
-// css
+
 :root{
     --blackColor : #000000;
     --whiteColor : #ffffff;
@@ -26,5 +21,5 @@ $danger: #9CA3DB;
 
 
 
-// import bs styles at bottom!!
+
 @import '~bootstrap/scss/bootstrap.scss';
