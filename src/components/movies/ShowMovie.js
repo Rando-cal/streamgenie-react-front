@@ -13,14 +13,20 @@ import { getFavorites, addToFavorites, removeFromFavorites } from "../../api/fav
 
 const ShowMovie = (props) => {
     const [movie, setMovie] = useState(null)
-    const [favorites, setFavorites] = useState(null)
-    // const [updatedFavorites, setupdatedFavorites] = useState(false)
+    const [favorites, setFavorites] = useState([7777777])
+    const [areLoggedIn, setareLoggedIn] = useState(true)
+    const [updatedFavorites, setUpdatedFavorites] = useState(false)
 
     const { id } = useParams()
     const navigate = useNavigate()
     const { user, msgAlert } = props
-    //declare boolean to refresh page after add or remove favorites
-    let updatedFavorites = false
+    // let areLoggedIn = false
+    if (!user) {
+        setareLoggedIn(false)
+    }
+
+    console.log('in SHOWMOVIE.js');
+
 
     //we need a boolean variable to flip whenever we add or remove a show. CHECK
     // this variable will go inside the useeffect dependency array CHECK
@@ -46,9 +52,9 @@ const ShowMovie = (props) => {
     // }, [updatedFavorites])
 
     useEffect(() => {
+
         getOneMovie(id)
             .then(res => {
-
                 const theMovie = res.data.movie
                 console.log("movie after getOnemovie:", theMovie)
                 getFavorites(user)
@@ -64,7 +70,7 @@ const ShowMovie = (props) => {
                             message: messages.getContentFailure,
                             variant: 'danger'
                         })
-                        navigate('/')
+                        // navigate('/')
                         //navigate back to the home page if there's an error fetching
                     })
             })
@@ -77,7 +83,10 @@ const ShowMovie = (props) => {
                 navigate('/')
                 //navigate back to the home page if there's an error fetching
             })
+
     }, [updatedFavorites])
+
+
 
 
     //Function to check if movie is in favorites
@@ -85,20 +94,20 @@ const ShowMovie = (props) => {
     //then we compare movie.contentId to [favorites.contentID]
     //return true is there is a match, false if not
     console.log("This is favorites:", favorites)
-    if (user.username !== '') {
-        const favoritesIdArray = favorites.map((favorites) => {
-            return favorites.contentId
-        })
-        console.log("This is favoritesIdArray:", favoritesIdArray)
-        console.log("this is movie.contentId:", movie.contentId)
-        const checkFavorites = () => {
-            if (favoritesIdArray.includes(movie.contentId)) {
-                return true
-            } else {
-                return false
-            }
-        }
 
+    const favoritesIdArray = favorites.map((favorites) => {
+        return favorites.contentId
+    })
+    console.log("This is favoritesIdArray:", favoritesIdArray)
+    // console.log("this is movie.contentId:", movie.contentId)
+
+
+    const checkFavorites = () => {
+        if (favoritesIdArray.includes(movie.contentId)) {
+            return true
+        } else {
+            return false
+        }
     }
 
 
@@ -107,7 +116,10 @@ const ShowMovie = (props) => {
 
     //function to remove movie from the favorites list
     const removeMovieFromFavorites = () => {
-        removeFromFavorites(user, movie.id)
+        console.log("remove function")
+        console.log("movie:", movie)
+        console.log("movie._id:", movie.contentId)
+        removeFromFavorites(user, movie.contentId)
             // on success send a success message
             .then(() => {
                 msgAlert({
@@ -117,7 +129,10 @@ const ShowMovie = (props) => {
                 })
             })
             // then navigate to index
-            .then(() => { updatedFavorites = !updatedFavorites })
+            .then(() => {
+                setUpdatedFavorites((prevFavorites) => (
+                    !prevFavorites))
+            })
             // on failure send a failure message
             .catch(err => {
                 msgAlert({
@@ -140,7 +155,7 @@ const ShowMovie = (props) => {
                 })
             })
 
-            .then(() => { updatedFavorites = !updatedFavorites })
+            // .then(() => { updatedFavorites = !updatedFavorites })
 
             .catch(err => {
                 msgAlert({
@@ -163,19 +178,32 @@ const ShowMovie = (props) => {
                 <Card.Header>{movie.title}</Card.Header>
                 <Card.Body><img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img></Card.Body>
                 <Card.Footer>
-                    {/* {(checkFavorites()) ?
-                        (<Button onClick={() => { removeMovieFromFavorites() }}
+
+                    {/* {(areLoggedIn) ?
+                        (checkFavorites()) ?
+                            (<Button onClick={() => { removeMovieFromFavorites() }}
+                                className="m-2">
+                                Remove From Favorites
+                            </Button>) :
+                            (<Button onClick={() => { addMovieToFavorites() }}
+                                className="m-2">
+                                Add To Favorites
+                            </Button>)
+                        :
+                        (
+                            <p>Sign in to add favorites</p>
+                        )} */}
+                    {(checkFavorites())
+                        ?
+                        <Button onClick={() => { removeMovieFromFavorites() }}
                             className="m-2">
                             Remove From Favorites
-                        </Button>) :
-                        (<Button onClick={() => { addMovieToFavorites() }}
+                        </Button>
+                        :
+                        <Button onClick={() => { addMovieToFavorites() }}
                             className="m-2">
                             Add To Favorites
-                        </Button>)
-                    } */}
-
-
-
+                        </Button>}
                 </Card.Footer>
             </Card>
         </Container>

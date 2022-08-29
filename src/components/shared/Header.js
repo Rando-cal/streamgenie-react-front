@@ -47,7 +47,7 @@ const Header =
 												{/* this changes it a bit from ms-auto to ml-auto */}
 												{/* my-2 my-sm-0 in Bootstrap ?? */}
 					<Nav.Item className="nav-item ms-auto">
-						<li clasName="nav-item">
+						<li className="nav-item">
 						<Link className="margin-10px nav-link " to='sign-up' style={linkStyle}>Sign Up</Link>
 						</li>
 					</Nav.Item>

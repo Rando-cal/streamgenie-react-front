@@ -12,6 +12,8 @@ import './SignUp.css'
 
 import regionList from '../../../regionList'
 
+import { createFavorites } from '../../../api/favorites'
+
 
 const SignUp = ({msgAlert,setUser,region,setRegion}) => {
   
