@@ -14,11 +14,16 @@ import { getFavorites, addToFavorites, removeFromFavorites } from "../../api/fav
 const ShowMovie = (props) => {
     const [movie, setMovie] = useState(null)
     const [favorites, setFavorites] = useState(null)
+    const [areLoggedIn, setareLoggedIn] = useState(false)
     // const [updatedFavorites, setupdatedFavorites] = useState(false)
 
     const { id } = useParams()
     const navigate = useNavigate()
     const { user, msgAlert } = props
+    // let areLoggedIn = false
+    if (user !== null) {
+        setareLoggedIn(true)
+    }
     //declare boolean to refresh page after add or remove favorites
     let updatedFavorites = false
 
@@ -46,37 +51,52 @@ const ShowMovie = (props) => {
     // }, [updatedFavorites])
 
     useEffect(() => {
-        getOneMovie(id)
-            .then(res => {
+        if (areLoggedIn) {
+            getOneMovie(id)
+                .then(res => {
 
-                const theMovie = res.data.movie
-                console.log("movie after getOnemovie:", theMovie)
-                getFavorites(user)
-                    .then(res => {
-                        console.log("theMovie after getFavorites:", theMovie)
-                        console.log("favorites after getFavorites:", res.data.favorites)
-                        setFavorites(res.data.favorites)
-                        setMovie(theMovie)
-                    })
-                    .catch(err => {
-                        msgAlert({
-                            heading: 'Error getting favorites',
-                            message: messages.getContentFailure,
-                            variant: 'danger'
+                    const theMovie = res.data.movie
+                    console.log("movie after getOnemovie:", theMovie)
+                    getFavorites(user)
+                        .then(res => {
+                            console.log("theMovie after getFavorites:", theMovie)
+                            console.log("favorites after getFavorites:", res.data.favorites)
+                            setFavorites(res.data.favorites)
+                            setMovie(theMovie)
                         })
-                        navigate('/')
-                        //navigate back to the home page if there's an error fetching
-                    })
-            })
-            .catch(err => {
-                msgAlert({
-                    heading: 'Error getting favorites',
-                    message: messages.getContentFailure,
-                    variant: 'danger'
+                        .catch(err => {
+                            msgAlert({
+                                heading: 'Error getting favorites',
+                                message: messages.getContentFailure,
+                                variant: 'danger'
+                            })
+                            navigate('/')
+                            //navigate back to the home page if there's an error fetching
+                        })
                 })
-                navigate('/')
-                //navigate back to the home page if there's an error fetching
-            })
+                .catch(err => {
+                    msgAlert({
+                        heading: 'Error getting favorites',
+                        message: messages.getContentFailure,
+                        variant: 'danger'
+                    })
+                    navigate('/')
+                    //navigate back to the home page if there's an error fetching
+                })
+        } else {
+            getOneMovie(id)
+                .then(res => setMovie(res.data.movie))
+                .catch(err => {
+                    msgAlert({
+                        heading: 'Error getting movie',
+                        message: messages.getContentFailure,
+                        variant: 'danger'
+                    })
+                    navigate('/')
+                    //navigate back to the home page if there's an error fetching
+                })
+        }
+
     }, [updatedFavorites])
 
 
@@ -85,20 +105,24 @@ const ShowMovie = (props) => {
     //then we compare movie.contentId to [favorites.contentID]
     //return true is there is a match, false if not
     console.log("This is favorites:", favorites)
-    if (user.username !== '') {
-        const favoritesIdArray = favorites.map((favorites) => {
+    let favoritesIdArray = []
+    if (areLoggedIn) {
+        favoritesIdArray = favorites.map((favorites) => {
             return favorites.contentId
         })
         console.log("This is favoritesIdArray:", favoritesIdArray)
         console.log("this is movie.contentId:", movie.contentId)
-        const checkFavorites = () => {
-            if (favoritesIdArray.includes(movie.contentId)) {
-                return true
-            } else {
-                return false
-            }
-        }
 
+
+    }
+
+
+    const checkFavorites = () => {
+        if (favoritesIdArray.includes(movie.contentId)) {
+            return true
+        } else {
+            return false
+        }
     }
 
 
@@ -163,17 +187,40 @@ const ShowMovie = (props) => {
                 <Card.Header>{movie.title}</Card.Header>
                 <Card.Body><img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img></Card.Body>
                 <Card.Footer>
-                    {(checkFavorites()) ?
-                        (<Button onClick={() => { removeMovieFromFavorites() }}
-                            className="m-2">
-                            Remove From Favorites
-                        </Button>) :
-                        (<Button onClick={() => { addMovieToFavorites() }}
-                            className="m-2">
-                            Add To Favorites
-                        </Button>)
-                    }
 
+                    {/* {(areLoggedIn) ?
+                        (checkFavorites()) ?
+                            (<Button onClick={() => { removeMovieFromFavorites() }}
+                                className="m-2">
+                                Remove From Favorites
+                            </Button>) :
+                            (<Button onClick={() => { addMovieToFavorites() }}
+                                className="m-2">
+                                Add To Favorites
+                            </Button>)
+                        :
+                        (
+                            <p>Sign in to add favorites</p>
+                        )} */}
+                    {
+                        (areLoggedIn)
+                            ?
+                            (
+                                (checkFavorites())
+                                    ?
+                                    (<Button onClick={() => { removeMovieFromFavorites() }}
+                                        className="m-2">
+                                        Remove From Favorites
+                                    </Button>)
+                                    :
+                                    (<Button onClick={() => { addMovieToFavorites() }}
+                                        className="m-2">
+                                        Add To Favorites
+                                    </Button>)
+                            )
+                            :
+                            (<p>Sign in to add favorites</p>)
+                    }
 
 
                 </Card.Footer>
