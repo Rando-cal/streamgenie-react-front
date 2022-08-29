@@ -12,7 +12,8 @@ import IndexMoviesByPlatform from '../movies/IndexMoviesByPlatform'
 // import "../../../styles/generalStyle.css"
 const linkStyle = {
 	color: 'white',
-	textDecoration: 'none'}
+	textDecoration: 'none'
+}
 
 
 const navBarColor = {
@@ -44,23 +45,6 @@ const Header =
 						Sign Out
 					</Link>
 				</Nav.Item>
-			</>
-		)
-
-		const unauthenticatedOptions = (
-			<>
-				<Nav.Item>
-					<Link to='sign-up' style={linkStyle}>Sign Up</Link>
-				</Nav.Item>
-				<Nav.Item>
-					<Link to='sign-in' style={linkStyle}>Sign In</Link>
-				</Nav.Item>
-			</>
-		)
-
-		const alwaysOptions = (
-			<>
-
 				<Nav.Item>
 					<Link to='/favorites' style={linkStyle}>
 						Favorites
@@ -94,15 +78,34 @@ const Header =
 					</NavDropdown.Item>
 				</NavDropdown>
 				<Nav.Item>
-				<Searchbox 
-					radioValue={radioValue}
-					setRadioValue={setRadioValue}
-					searchValue={searchValue}
-					setSearchValue={setSearchValue}
-					searchIndexMovieList={searchIndexMovieList}
-					setSearchIndexMovieList={setSearchIndexMovieList}
-				/>
-			</Nav.Item>
+					<Searchbox
+						radioValue={radioValue}
+						setRadioValue={setRadioValue}
+						searchValue={searchValue}
+						setSearchValue={setSearchValue}
+						searchIndexMovieList={searchIndexMovieList}
+						setSearchIndexMovieList={setSearchIndexMovieList}
+					/>
+				</Nav.Item>
+			</>
+		)
+
+		const unauthenticatedOptions = (
+			<>
+				<Nav.Item>
+					<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+				</Nav.Item>
+				<Nav.Item>
+					<Link to='sign-in' style={linkStyle}>Sign In</Link>
+				</Nav.Item>
+
+			</>
+		)
+
+		const alwaysOptions = (
+			<>
+
+
 			</>
 		)
 
