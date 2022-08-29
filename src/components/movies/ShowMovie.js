@@ -57,16 +57,16 @@ const ShowMovie = (props) => {
         getOneMovie(id)
             .then(res => {
                 const theMovie = res.data
-                console.log("movie after getOnemovie:", theMovie)
+                console.log("1 movie after getOnemovie:", theMovie)
                 getFavorites(user)
                     .then(res => {
-                        console.log("theMovie after getFavorites:", theMovie)
-                        console.log("favorites after getFavorites:", res.data.favorites)
+                        console.log("2 theMovie after getFavorites:", theMovie)
+                        console.log("3 favorites after getFavorites:", res.data.favorites)
                         setFavorites(res.data.favorites)
                         setMovie(theMovie.movie)
                         setProviders(theMovie.providers)
-                        console.log("movie after setting Movie:", movie)
-                        console.log("providers after setting providers:", providers)
+                        console.log("4 movie after setting Movie:", movie)
+                        console.log("5 providers after setting providers:", providers)
                     })
                     .catch(err => {
                         msgAlert({
@@ -143,7 +143,15 @@ const ShowMovie = (props) => {
     // console.log("movie:", movie)
     // console.log("movie.genres:", movie.genres)
 
-    // const genresList = movie.genres.map((genre, index) => (
+    const genresList = () => {
+        const list = movie && movie.genres.map((genre, index) => (
+            <li key={index}>
+                {genre.name}
+            </li>
+        ))
+    }
+
+    // const genresList = movie && movie.genres.map((genre, index) => (
     //     <li key={index}>
     //         {genre.name}
     //     </li>
@@ -181,6 +189,7 @@ const ShowMovie = (props) => {
 
 
     //Function for where is it streaming
+    // UNCOMMENT
     const whereStreaming = (term) => {
 
         if (term == 'name') {
@@ -228,7 +237,7 @@ const ShowMovie = (props) => {
 
 
 
-    if (!movie) {
+    if (!movie || !providers || !favorites) {
         return <LoadingScreen />
     }
 
@@ -242,14 +251,13 @@ const ShowMovie = (props) => {
                     </div>
                     <div class="infoGrid">
                         <h2>{movie.title}</h2> <p>{year()}</p>
-                        {/* WHERE IS IT STREAMING */}
                         {/* <img src={`https://image.tmdb.org/t/p/w500${whereStreaming()}`}></img> */}
                         <h4>Available for streaming on: {whereStreaming('name')}</h4>
                         <p>{movie.overview}</p>
                         <p>{rating()}</p>
-                        {/* <ul>
-                            {genresList}
-                        </ul> */}
+                        <ul>
+                            {genresList()}
+                        </ul>
                         <p>{movie.runtime} minutes</p>
                     </div>
 
