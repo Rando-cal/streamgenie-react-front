@@ -14,15 +14,7 @@ import regionList from '../../../regionList'
 
 
 const SignUp = ({msgAlert,setUser,region,setRegion}) => {
-	// constructor(props) {
-	// 	super(props)
-
-	// 	this.state = {
-	// 		email: '',
-	// 		password: '',
-	// 		passwordConfirmation: '',
-	// 	}
-	// }    
+  
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -70,11 +62,12 @@ const SignUp = ({msgAlert,setUser,region,setRegion}) => {
         <div className = "signUpContainer">
             <div className='row'>
                 <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                    <h3 className="whiteColor">Sign Up</h3>
+                    <h3 className="whiteColor blackBG margin-10px">Sign Up</h3>
                     <Form onSubmit={onSignUp}>
                         <Form.Group controlId='username'>
                             {/* <Form.Label>Username</Form.Label> */}
                             <Form.Control
+                                className="margin-10px"
                                 required
                                 name='user'
                                 value={userName}
@@ -86,6 +79,7 @@ const SignUp = ({msgAlert,setUser,region,setRegion}) => {
                         <Form.Group controlId='email'>
                             {/* <Form.Label>Email address</Form.Label> */}
                             <Form.Control
+                                className="margin-10px"
                                 required
                                 type='email'
                                 name='email'
@@ -97,6 +91,7 @@ const SignUp = ({msgAlert,setUser,region,setRegion}) => {
                         <Form.Group controlId='password'>
                             {/* <Form.Label>Password</Form.Label> */}
                             <Form.Control
+                                className="margin-10px"
                                 required
                                 name='password'
                                 value={password}
@@ -108,6 +103,7 @@ const SignUp = ({msgAlert,setUser,region,setRegion}) => {
                         <Form.Group controlId='passwordConfirmation'>
                             {/* <Form.Label>Password Confirmation</Form.Label> */}
                             <Form.Control
+                                className="margin-10px"
                                 required
                                 name='passwordConfirmation'
                                 value={passwordConfirmation}
@@ -134,7 +130,7 @@ const SignUp = ({msgAlert,setUser,region,setRegion}) => {
 
                             </div>
                         </Form.Group> */}
-                        <Button variant='secondary' type='submit'>
+                        <Button variant='secondary' type='submit' className="margin-10px">
                             Submit
                         </Button>
                     </Form>
