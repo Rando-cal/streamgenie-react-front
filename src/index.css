@@ -31,3 +31,42 @@ html{
   background-color: white;
   color:white;
 }
+
+
+.margin-10px{
+  margin:10px
+}
+
+
+.margin-20px{
+  margin:20px
+}
+
+.marginL-10px{
+  margin-left: 10px;
+}
+
+.marginL-20px{
+  margin-left: 20px;
+}
+
+.navbar .navbar-nav {
+  display: flex;
+  float: none;
+  vertical-align: center;
+}
+
+/* .navbar .navbar-collapse {
+  text-align: center;
+} */
+
+.abs-center-x {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* .ml-auto .dropdown-menu {
+  left: auto !important;
+  right: 0px;
+} */
