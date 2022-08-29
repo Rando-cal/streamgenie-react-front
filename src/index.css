@@ -17,17 +17,26 @@ code {
   max-width: 200px;
   margin: 7px auto;
 }
+
 .search_select_box select {
   width: 100px
 }
 
 
 /* make the 'negative space' black */
-html{
+html {
   background-color: black;
 }
 
-.whiteColor{
+.whiteColor {
   background-color: white;
-  color:white;
+  color: white;
+}
+
+.poster {
+  display: inline;
+}
+
+.infoGrid {
+  display: inline;
 }
