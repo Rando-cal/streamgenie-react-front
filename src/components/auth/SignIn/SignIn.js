@@ -58,11 +58,12 @@ const SignIn = (props) => {
         <div className= "signInContainer">
             <div className='row'>
                 <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                    <h3 className= "whiteColor">Sign In</h3>
+                    <h3 className= "whiteColor blackBG margin-10px">Sign In</h3>
                     <Form onSubmit={onSignIn}>
                         <Form.Group controlId='email'>
                             {/* <Form.Label>Email address</Form.Label> */}
                             <Form.Control
+                                className="margin-10px"
                                 required
                                 type='email'
                                 name='email'
@@ -74,6 +75,7 @@ const SignIn = (props) => {
                         <Form.Group controlId='password'>
                             {/* <Form.Label>Password</Form.Label> */}
                             <Form.Control
+                                className="margin-10px"
                                 required
                                 name='password'
                                 value={password}
@@ -82,7 +84,7 @@ const SignIn = (props) => {
                                 onChange={e => setPassword(e.target.value)}
                             />
                         </Form.Group>
-                        <Button  variant='secondary' type='submit'>
+                        <Button className="margin-10px" variant='secondary' type='submit'>
                             Submit
                         </Button>
                     </Form>

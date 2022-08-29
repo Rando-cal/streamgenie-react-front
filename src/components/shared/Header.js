@@ -15,6 +15,7 @@ const linkStyle = {
 	textDecoration: 'none'}
 
 // PAY ATTENTION TO CALLBACK FUNCTION and whether it is a () or {} -----> implicit vs explicit return
+// Don't use Nav.Link - it breaks them...
 const Header =
 	({
 		user,
@@ -28,13 +29,13 @@ const Header =
 
 		const authenticatedOptions = (
 			<>
-				<Nav.Item>
-					<Link  to='change-password' style={linkStyle}>
+				<Nav.Item className="nav-item ms-auto">
+					<Link className="margin-10px nav-link " to='change-password' style={linkStyle}>
 						Change Password
 					</Link>
 				</Nav.Item>
 				<Nav.Item>
-					<Link to='sign-out' style={linkStyle}>
+					<Link className="margin-10px nav-link" to='sign-out' style={linkStyle}>
 						Sign Out
 					</Link>
 				</Nav.Item>
@@ -50,8 +51,8 @@ const Header =
 						<Link className="margin-10px nav-link " to='sign-up' style={linkStyle}>Sign Up</Link>
 						</li>
 					</Nav.Item>
-					<Nav.Item class="nav-item m-auto">
-						<Nav.Link className="margin-10px nav-link" to='sign-in' style={linkStyle}>Sign In</Nav.Link>
+					<Nav.Item class="nav-item ">
+						<Link className="margin-10px nav-link" to='sign-in' style={linkStyle}>Sign In</Link>
 					</Nav.Item>
 
 			</>
