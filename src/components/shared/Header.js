@@ -35,7 +35,7 @@ const Header =
 		const authenticatedOptions = (
 			<>
 				<Nav.Item>
-					<Link to='change-password' style={linkStyle}>
+					<Link  to='change-password' style={linkStyle}>
 						Change Password
 					</Link>
 				</Nav.Item>
@@ -49,12 +49,17 @@ const Header =
 
 		const unauthenticatedOptions = (
 			<>
-				<Nav.Item>
-					<Link to='sign-up' style={linkStyle}>Sign Up</Link>
-				</Nav.Item>
-				<Nav.Item>
-					<Link to='sign-in' style={linkStyle}>Sign In</Link>
-				</Nav.Item>
+												{/* this changes it a bit from ms-auto to ml-auto */}
+												{/* my-2 my-sm-0 in Bootstrap ?? */}
+					<Nav.Item className="nav-item ms-auto">
+						<li clasName="nav-item">
+						<Link className="margin-10px nav-link " to='sign-up' style={linkStyle}>Sign Up</Link>
+						</li>
+					</Nav.Item>
+					<Nav.Item class="nav-item m-auto">
+						<Nav.Link className="margin-10px nav-link" to='sign-in' style={linkStyle}>Sign In</Nav.Link>
+					</Nav.Item>
+
 			</>
 		)
 
@@ -62,11 +67,11 @@ const Header =
 			<>
 
 				<Nav.Item>
-					<Link to='/favorites' style={linkStyle}>
+					<Link className="margin-10px nav-link" to='/favorites' style={linkStyle}>
 						Favorites
 					</Link>
 				</Nav.Item>
-				<NavDropdown title="Platforms">
+				<NavDropdown  className="nav-link"title="Platforms">
 					<NavDropdown.Item>
 						<Link to={{ pathname: '/movies/platform/8' }} >
 							Netflix
@@ -95,6 +100,7 @@ const Header =
 				</NavDropdown>
 				<Nav.Item>
 				<Searchbox 
+					 
 					radioValue={radioValue}
 					setRadioValue={setRadioValue}
 					searchValue={searchValue}
@@ -108,21 +114,23 @@ const Header =
 
 		return (
 			<Navbar bg='primary' variant='dark' expand='md' style={navBarColor} >
-				<Navbar.Brand>
-					<Link to='/' style={linkStyle}>
-						StreamGenie
-					</Link>
-				</Navbar.Brand>
-				<Navbar.Toggle aria-controls='basic-navbar-nav' />
-				<Navbar.Collapse id='basic-navbar-nav'>
-					<Nav className='ml-auto'>
-						{user && (
-							<span className='navbar-text mr-2'>Welcome, {user.userName}</span>
-						)}
-						{alwaysOptions}
-						{user ? authenticatedOptions : unauthenticatedOptions}
-					</Nav>
-				</Navbar.Collapse>
+				<Nav className="container-fluid">
+					<Navbar.Brand>
+						<Link className="margin-10px" to='/' style={linkStyle}>
+							StreamGenie
+						</Link>
+					</Navbar.Brand>
+					<Navbar.Toggle aria-controls='basic-navbar-nav' />
+					<Navbar.Collapse id='basic-navbar-nav'>
+						<Nav className='container-fluid ml-auto'>
+							{user && (
+								<span className='navbar-text mr-2'>Welcome, {user.userName}</span>
+							)}
+							{alwaysOptions}
+							{user ? authenticatedOptions : unauthenticatedOptions}
+						</Nav>
+					</Navbar.Collapse>
+				</Nav>
 			</Navbar>
 		)
 

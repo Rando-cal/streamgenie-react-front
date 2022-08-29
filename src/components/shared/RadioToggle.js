@@ -15,8 +15,8 @@ const RadioToggle = ({user, onSearch,radioValue,setRadioValue}) => {
         ];
      
         return (
-          <Fragment>           
-            <ButtonGroup>
+          <Fragment >           
+            <ButtonGroup className="marginL-20px">
               {radios.map((radio, idx) => (
                 <ToggleButton
                   key={idx}

@@ -163,7 +163,7 @@ const ShowMovie = (props) => {
                 <Card.Header>{movie.title}</Card.Header>
                 <Card.Body><img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img></Card.Body>
                 <Card.Footer>
-                    {(checkFavorites()) ?
+                    {/* {(checkFavorites()) ?
                         (<Button onClick={() => { removeMovieFromFavorites() }}
                             className="m-2">
                             Remove From Favorites
@@ -172,7 +172,7 @@ const ShowMovie = (props) => {
                             className="m-2">
                             Add To Favorites
                         </Button>)
-                    }
+                    } */}
 
 
 
