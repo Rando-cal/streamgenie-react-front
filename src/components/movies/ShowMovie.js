@@ -10,10 +10,13 @@ import messages from '../shared/AutoDismissAlert/messages'
 import { getFavorites, addToFavorites, removeFromFavorites } from "../../api/favorites";
 
 //the movie's id comes from the 3rd party API
+//Hide show movie and favorites behind auth
+//fill out show movie with deetz
 
 const ShowMovie = (props) => {
     const [movie, setMovie] = useState(null)
-    const [favorites, setFavorites] = useState([7777777])
+    const [providers, setProviders] = useState(null)
+    const [favorites, setFavorites] = useState([])
     const [areLoggedIn, setareLoggedIn] = useState(true)
     const [updatedFavorites, setUpdatedFavorites] = useState(false)
 
@@ -55,14 +58,17 @@ const ShowMovie = (props) => {
 
         getOneMovie(id)
             .then(res => {
-                const theMovie = res.data.movie
-                console.log("movie after getOnemovie:", theMovie)
+                const theMovie = res.data
+                console.log("1 movie after getOnemovie:", theMovie)
                 getFavorites(user)
                     .then(res => {
-                        console.log("theMovie after getFavorites:", theMovie)
-                        console.log("favorites after getFavorites:", res.data.favorites)
+                        console.log("2 theMovie after getFavorites:", theMovie)
+                        console.log("3 favorites after getFavorites:", res.data.favorites)
                         setFavorites(res.data.favorites)
-                        setMovie(theMovie)
+                        setMovie(theMovie.movie)
+                        setProviders(theMovie.providers)
+                        console.log("4 movie after setting Movie:", movie)
+                        console.log("5 providers after setting providers:", providers)
                     })
                     .catch(err => {
                         msgAlert({
@@ -104,7 +110,7 @@ const ShowMovie = (props) => {
 
     }
 
-
+    //UNCOMMENT
     const checkFavorites = () => {
         if (favoritesIdArray.includes(movie.contentId)) {
             return true
@@ -114,8 +120,44 @@ const ShowMovie = (props) => {
     }
 
 
+    //Function to split year from movie.release_date
+    //UNCOMMENT
+    const year = () => {
+        const split_date = movie.release_date.split('-')
+        return split_date[0]
+    }
 
 
+
+    // console.log("this is movie!!!", movie)
+    // const year = movie.release_date.split('-')
+    // console.log("this is year!!!", year[0])
+
+    //function to show the average
+    // UNCOMMENT
+    const rating = () => {
+        const roundedRating = Math.round(movie.vote_average * 10) / 10
+        return `${roundedRating}/10`
+    }
+
+    //Function to map over genres and create an array of strings
+    // UNCOMMENT
+    // console.log("movie:", movie)
+    // console.log("movie.genres:", movie.genres)
+
+    const genresList = () => {
+        const list = movie && movie.genres.map((genre, index) => (
+            <li key={index}>
+                {genre.name}
+            </li>
+        ))
+    }
+
+    // const genresList = movie && movie.genres.map((genre, index) => (
+    //     <li key={index}>
+    //         {genre.name}
+    //     </li>
+    // ))
 
     //function to remove movie from the favorites list
     const removeMovieFromFavorites = () => {
@@ -147,6 +189,29 @@ const ShowMovie = (props) => {
     }
 
 
+
+    //Function for where is it streaming
+    // UNCOMMENT
+    const whereStreaming = (term) => {
+
+        if (term == 'name') {
+            const providerName = providers.map((provider, index) => {
+                return provider.provider_name
+            })
+            if (!providerName) {
+                return "Looks like this title is not streaming on any subscriptions at the moment."
+            } else {
+                return providerName
+            }
+        }
+        else {
+            const providerLogo = providers.map((provider, index) => {
+                return provider.logo_path
+            })
+        }
+
+    }
+
     //function to add movie to favorites
     const addMovieToFavorites = () => {
         addToFavorites(user, movie)
@@ -174,7 +239,7 @@ const ShowMovie = (props) => {
 
 
 
-    if (!movie) {
+    if (!movie || !providers || !favorites) {
         return <LoadingScreen />
     }
 
@@ -182,23 +247,26 @@ const ShowMovie = (props) => {
         <Container className="fluid blackBG">
             <Card>
                 <Card.Header>{movie.title}</Card.Header>
-                <Card.Body><img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img></Card.Body>
+                <Card.Body>
+                    <div class="poster">
+                        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>
+                    </div>
+                    <div class="infoGrid">
+                        <h2>{movie.title}</h2> <p>{year()}</p>
+                        {/* <img src={`https://image.tmdb.org/t/p/w500${whereStreaming()}`}></img> */}
+                        <h4>Available for streaming on: {whereStreaming('name')}</h4>
+                        <p>{movie.overview}</p>
+                        <p>{rating()}</p>
+                        <ul>
+                            {genresList()}
+                        </ul>
+                        <p>{movie.runtime} minutes</p>
+                    </div>
+
+                </Card.Body>
                 <Card.Footer>
 
-                    {/* {(areLoggedIn) ?
-                        (checkFavorites()) ?
-                            (<Button onClick={() => { removeMovieFromFavorites() }}
-                                className="m-2">
-                                Remove From Favorites
-                            </Button>) :
-                            (<Button onClick={() => { addMovieToFavorites() }}
-                                className="m-2">
-                                Add To Favorites
-                            </Button>)
-                        :
-                        (
-                            <p>Sign in to add favorites</p>
-                        )} */}
+
                     {(checkFavorites())
                         ?
                         <Button onClick={() => { removeMovieFromFavorites() }}
