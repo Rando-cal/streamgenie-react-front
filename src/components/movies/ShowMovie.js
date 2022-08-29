@@ -94,12 +94,15 @@ const ShowMovie = (props) => {
     //then we compare movie.contentId to [favorites.contentID]
     //return true is there is a match, false if not
     console.log("This is favorites:", favorites)
+    let favoritesIdArray = []
+    if (favorites !== [7777777]) {
+        favoritesIdArray = favorites.map((favorites) => {
+            return favorites.contentId
+        })
+        console.log("This is favoritesIdArray:", favoritesIdArray)
+        // console.log("this is movie.contentId:", movie.contentId)
 
-    const favoritesIdArray = favorites.map((favorites) => {
-        return favorites.contentId
-    })
-    console.log("This is favoritesIdArray:", favoritesIdArray)
-    // console.log("this is movie.contentId:", movie.contentId)
+    }
 
 
     const checkFavorites = () => {
@@ -155,7 +158,10 @@ const ShowMovie = (props) => {
                 })
             })
 
-            // .then(() => { updatedFavorites = !updatedFavorites })
+            .then(() => {
+                setUpdatedFavorites((prevFavorites) => (
+                    !prevFavorites))
+            })
 
             .catch(err => {
                 msgAlert({
