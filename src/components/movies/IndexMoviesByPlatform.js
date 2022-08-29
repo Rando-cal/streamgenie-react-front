@@ -8,6 +8,8 @@ import LoadingScreen from '../shared/LoadingScreen'
 import { getPopularMoviesByPlatform } from '../../api/movies.js'
 import messages from '../shared/AutoDismissAlert/messages'
 
+import './IndexMoviesByPlatform.css'
+
 //card container style
 const cardContainerStyle = {
     display: 'flex',
@@ -49,16 +51,18 @@ const IndexMoviesByPlatform = (props) => {
 
     const movieCards = movies.map((movie, index) => (
         <Link to={`/movie/${movie.id}`} key={index}>
-            <Card>
-                <Card.Body>
-                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}></img>
-                </Card.Body>
-            </Card>
+            <div className= "width17rem">
+                <a>
+                    <img className="width17rem p-20px"
+                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+                         alt={movie.title}></img>
+                </a>
+            </div>
         </Link>
     ))
 
     return (
-        <div style={cardContainerStyle}>
+        <div className= "blackBG" style={cardContainerStyle}>
             {movieCards}
         </div>
     )
