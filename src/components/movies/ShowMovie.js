@@ -142,7 +142,6 @@ const ShowMovie = (props) => {
     // UNCOMMENT
     // console.log("movie:", movie)
     // console.log("movie.genres:", movie.genres)
-
     const genresList = () => {
         const list = movie && movie.genres.map((genre, index) => (
             <li key={index}>
@@ -156,6 +155,10 @@ const ShowMovie = (props) => {
     //         {genre.name}
     //     </li>
     // ))
+
+
+
+
 
     //function to remove movie from the favorites list
     const removeMovieFromFavorites = () => {
@@ -194,11 +197,11 @@ const ShowMovie = (props) => {
 
         if (term == 'name') {
             if (providers.length == 0) {
-                return "No available streaming data."
+                return <li>"No available streaming data."</li>
             }
             else {
                 const providerName = providers.map((provider, index) => {
-                    return provider.provider_name
+                    return <li key={index}>{provider.provider_name}</li>
                 })
 
                 if (!providerName) {
@@ -256,7 +259,7 @@ const ShowMovie = (props) => {
 
             <div className="whiteColorOnly showCol2 pl-25px">
                 <h2 className="whiteColorOnly ">{movie.title}</h2>
-                <h5 className="whiteColorOnly pb-20px"> ({year()})</h5>                
+                <h5 className="whiteColorOnly pb-20px"> ({year()})</h5>
                 <h5 className="whiteColorOnly pb-20px" >{rating()}</h5>
                 <ul className="whiteColorOnly pb-20px"> {genresList()} </ul>
                 <h6 className="whiteColorOnly pb-20px pr-25px">{movie.overview}</h6>
@@ -266,15 +269,15 @@ const ShowMovie = (props) => {
 
             <div className="pl-25px" >
                 {(checkFavorites())
-                ?
+                    ?
                     <Button onClick={() => { removeMovieFromFavorites() }}
-                            className="m-2 grayBlueColorBG">
-                            Remove From Favorites
+                        className="m-2 grayBlueColorBG">
+                        Remove From Favorites
                     </Button>
-                :
+                    :
                     <Button onClick={() => { addMovieToFavorites() }}
-                            className="m-2 grayBlueColorBG">
-                            Add To Favorites
+                        className="m-2 grayBlueColorBG">
+                        Add To Favorites
                     </Button>}
             </div>
         </div>
