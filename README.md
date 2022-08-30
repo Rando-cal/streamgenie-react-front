@@ -2,7 +2,7 @@ Streamgenie is a movie and TV website where you can search for media titles incl
 
 API Repository: https://github.com/Rando-cal/streamgenie-react-back
 
-Deploy Link: https://streamgenie-back.herokuapp.com/ (issues)
+Deployed Client Link: https://streamgenie-client.herokuapp.com/ (issues)
 
 ## FRONT-END
 
