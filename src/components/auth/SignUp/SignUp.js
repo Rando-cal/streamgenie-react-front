@@ -132,7 +132,7 @@ const SignUp = ({msgAlert,setUser,region,setRegion}) => {
 
                             </div>
                         </Form.Group> */}
-                        <Button variant='secondary' type='submit' className="margin-10px">
+                        <Button variant='secondary' type='submit' className="margin-10px grayBlueColorBG">
                             Submit
                         </Button>
                     </Form>

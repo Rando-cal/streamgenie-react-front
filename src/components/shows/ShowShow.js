@@ -224,45 +224,79 @@ const ShowShow = (props) => {
         return <LoadingScreen />
     }
 
-    return (
-        <Container className="fluid">
-            <Card>
-                <Card.Header>{show.title}</Card.Header>
-                <Card.Body>
-                    <div class="poster">
-                        <img src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}></img>
-                    </div>
-                    <div class="infoGrid">
-                        <h2>{show.title}</h2> <p>{year()}</p>
-                        {/* <img src={`https://image.tmdb.org/t/p/w500${whereStreaming()}`}></img> */}
-                        <h4>Available for streaming on: {whereStreaming('name')}</h4>
-                        <p>{show.overview}</p>
-                        <p>{rating()}</p>
-                        <ul>
-                            {genresList()}
-                        </ul>
-                        <p>{show.number_of_seasons} Seasons</p>
-                    </div>
+    return (       
 
-                </Card.Body>
-                <Card.Footer>
+        <div className="blackBG showTvContainer">
+            <div className="poster">                
+                <img className="width18-5rem pl-25px" src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}></img>
+            </div>
+            <div className="whiteColorOnly showCol2 pl-25px">
+                <h2 className="whiteColorOnly ">{show.title}</h2>
+                <h5 className="whiteColorOnly pb-20px"> ({year()})</h5>                
+                <h5 className="whiteColorOnly " >{rating()}</h5>
+                <ul className="whiteColorOnly pb-20px"> {genresList()} </ul>
+                <h5 className="whiteColorOnly pb-20px">{show.number_of_seasons} Seasons</h5>
+                <h6 className="whiteColorOnly pb-20px pr-25px">{show.overview}</h6>
+                <h3 className="whiteColorOnly">Available for streaming on: {whereStreaming('name')}</h3>
 
+            </div>
 
-                    {(checkFavorites())
-                        ?
-                        <Button onClick={() => { removeShowFromFavorites() }}
-                            className="m-2">
-                            Remove From Favorites
-                        </Button>
-                        :
-                        <Button onClick={() => { addShowToFavorites() }}
-                            className="m-2">
-                            Add To Favorites
-                        </Button>}
-                </Card.Footer>
-            </Card>
-        </Container>
+            <div className="pl-25px">    
+            {(checkFavorites())
+                            ?
+                            <Button onClick={() => { removeShowFromFavorites() }}
+                                className="m-2 grayBlueColorBG" >
+                                Remove From Favoritess
+                            </Button>
+                            :
+                            <Button onClick={() => { addShowToFavorites() }}
+                                className="m-2 grayBlueColorBG">
+                                Add To Favorites
+                            </Button>}
+            </div>
+
+        </div>
+
     )
+        
+        
 }
+
+         {/* <Container className="fluid">
+             <Card>
+                 <Card.Header>{show.title}</Card.Header>
+                 <Card.Body>
+                     <div class="poster">
+                         <img src={`https://image.tmdb.org/t/p/w500${show.poster_path}`}></img>
+                     </div>
+                     <div class="infoGrid">
+                         <h2>{show.title}</h2> <p>{year()}</p> */}
+                         {/* <img src={`https://image.tmdb.org/t/p/w500${whereStreaming()}`}></img> */}
+                         {/* <h4>Available for streaming on: {whereStreaming('name')}</h4>
+                         <p>{show.overview}</p>
+                         <p>{rating()}</p>
+                         <ul>
+                             {genresList()}
+                         </ul>
+                         <p>{show.number_of_seasons} Seasons</p>
+                     </div>
+                 </Card.Body>
+                 <Card.Footer>
+                     {(checkFavorites())
+                         ?
+                         <Button onClick={() => { removeShowFromFavorites() }}
+                             className="m-2">
+                             Remove From Favorites
+                         </Button>
+                         :
+                         <Button onClick={() => { addShowToFavorites() }}
+                             className="m-2">
+                             Add To Favorites
+                         </Button>}
+                 </Card.Footer>
+             </Card>
+         </Container>
+     )
+} */}
 
 export default ShowShow

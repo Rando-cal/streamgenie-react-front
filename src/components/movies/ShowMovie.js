@@ -127,8 +127,6 @@ const ShowMovie = (props) => {
         return split_date[0]
     }
 
-
-
     // console.log("this is movie!!!", movie)
     // const year = movie.release_date.split('-')
     // console.log("this is year!!!", year[0])
@@ -250,52 +248,39 @@ const ShowMovie = (props) => {
     }
 
     return (
-
-        <Container className="blackBG showContainer">
+        <div className="blackBG showMovieContainer">
 
             <div className="poster">
-                <img className="width18-5rem" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>
+                <img className="width18-5rem pl-25px" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>
             </div>
 
+            <div className="whiteColorOnly showCol2 pl-25px">
+                <h2 className="whiteColorOnly ">{movie.title}</h2>
+                <h5 className="whiteColorOnly pb-20px"> ({year()})</h5>                
+                <h5 className="whiteColorOnly pb-20px" >{rating()}</h5>
+                <ul className="whiteColorOnly pb-20px"> {genresList()} </ul>
+                <h6 className="whiteColorOnly pb-20px pr-25px">{movie.overview}</h6>
+                <h5 className="whiteColorOnly pb-20px">{movie.runtime} minutes</h5>
+                <h3 className="whiteColorOnly">Available for streaming on: {whereStreaming('name')}</h3>
+            </div>
 
-        </Container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <div className="pl-25px" >
+                {(checkFavorites())
+                ?
+                    <Button onClick={() => { removeMovieFromFavorites() }}
+                            className="m-2 grayBlueColorBG">
+                            Remove From Favorites
+                    </Button>
+                :
+                    <Button onClick={() => { addMovieToFavorites() }}
+                            className="m-2 grayBlueColorBG">
+                            Add To Favorites
+                    </Button>}
+            </div>
+        </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
+        //  // PRIOR CARD
         // <Container className="fluid blackBG">
         //     <Card>
         //         <Card.Header></Card.Header>

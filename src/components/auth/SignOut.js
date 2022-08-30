@@ -34,10 +34,10 @@ const SignOut = (props) => {
                 <div className='col-sm-10 col-md-8 mx-auto mt-5 '>
                     <h2 className= "margin-20px">Sure you want to sign out?</h2>
                     <ButtonGroup className= "margin-20px">
-                        <Button variant='danger' onClick={onSignOut}>
+                        <Button variant='danger ' onClick={onSignOut}>
                             Yes
                         </Button>
-                        <Button variant='warning' onClick={onCancel}>
+                        <Button variant='warning ' onClick={onCancel}>
                             No
                         </Button>
                     </ButtonGroup>
