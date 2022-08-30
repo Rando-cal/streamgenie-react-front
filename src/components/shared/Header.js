@@ -45,7 +45,7 @@ const Header =
 						Favorites
 					</Link>
 				</Nav.Item>
-				<NavDropdown  className="nav-link"title="Platforms">
+				<NavDropdown className="nav-link" title="Platforms">
 					<NavDropdown.Item>
 						<Link to={{ pathname: '/movies/platform/8' }} >
 							Netflix
@@ -57,7 +57,7 @@ const Header =
 						</Link>
 					</NavDropdown.Item>
 					<NavDropdown.Item >
-						<Link to={{ pathname: '/movies/platform/119' }} >
+						<Link to={{ pathname: '/movies/platform/9' }} >
 							Amazon Prime
 						</Link>
 					</NavDropdown.Item>
@@ -105,7 +105,7 @@ const Header =
 		)
 
 		return (
-			<Navbar  variant='dark' expand='md' className="nearBlackColor">
+			<Navbar variant='dark' expand='md' className="nearBlackColor">
 				<Nav className="container-fluid">
 					<Navbar.Brand>
 						<Link className="margin-10px" to='/' style={linkStyle}>
