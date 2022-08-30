@@ -88,10 +88,10 @@ const Header =
 		const unauthenticatedOptions = (
 			<>
 				<Nav.Item>
-					<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+					<Link className="pl-25px" to='sign-up' style={linkStyle}>Sign Up</Link>
 				</Nav.Item>
 				<Nav.Item>
-					<Link to='sign-in' style={linkStyle}>Sign In</Link>
+					<Link className="pl-25px" to='sign-in' style={linkStyle}>Sign In</Link>
 				</Nav.Item>
 
 			</>
