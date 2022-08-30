@@ -62,7 +62,7 @@ const Header =
 						</Link>
 					</NavDropdown.Item>
 					<NavDropdown.Item >
-						<Link style={linkStyleDrop} to={{ pathname: '/movies/platform/119' }} >
+						<Link style={linkStyleDrop} to={{ pathname: '/movies/platform/9' }} >
 							Amazon Prime
 						</Link>
 					</NavDropdown.Item>
