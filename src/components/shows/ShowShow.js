@@ -171,11 +171,11 @@ const ShowShow = (props) => {
 
         if (term == 'name') {
             if (providers.length == 0) {
-                return "No available streaming data."
+                return <li>No available streaming data</li>
             }
             else {
                 const providerName = providers.map((provider, index) => {
-                    return provider.provider_name
+                    return <li key={index}>{provider.provider_name}</li>
                 })
 
                 if (!providerName) {
