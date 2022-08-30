@@ -10,10 +10,15 @@ import { NavDropdown } from 'react-bootstrap'
 import IndexMoviesByPlatform from '../movies/IndexMoviesByPlatform'
 
 // import "../../../styles/generalStyle.css"
-// const linkStyle = {
-// 	color: 'white',
-// 	textDecoration: 'none'
-// }
+const linkStyle = {
+	color: 'white',
+	textDecoration: 'none'
+}
+
+const linkStyleDrop = {
+	color: 'black',
+	textDecoration: 'none'
+}
 
 // PAY ATTENTION TO CALLBACK FUNCTION and whether it is a () or {} -----> implicit vs explicit return
 // Don't use Nav.Link - it breaks them...
@@ -47,27 +52,27 @@ const Header =
 				</Nav.Item>
 				<NavDropdown  className="nav-link"title="Platforms">
 					<NavDropdown.Item>
-						<Link to={{ pathname: '/movies/platform/8' }} >
+						<Link style={linkStyleDrop} to={{ pathname: '/movies/platform/8' }} >
 							Netflix
 						</Link>
 					</NavDropdown.Item>
 					<NavDropdown.Item >
-						<Link to={{ pathname: '/movies/platform/384' }} >
+						<Link style={linkStyleDrop} to={{ pathname: '/movies/platform/384' }} >
 							Hbo Max
 						</Link>
 					</NavDropdown.Item>
 					<NavDropdown.Item >
-						<Link to={{ pathname: '/movies/platform/119' }} >
+						<Link style={linkStyleDrop} to={{ pathname: '/movies/platform/119' }} >
 							Amazon Prime
 						</Link>
 					</NavDropdown.Item>
 					<NavDropdown.Item >
-						<Link to={{ pathname: '/movies/platform/15' }} >
+						<Link style={linkStyleDrop} to={{ pathname: '/movies/platform/15' }} >
 							Hulu
 						</Link>
 					</NavDropdown.Item>
 					<NavDropdown.Item >
-						<Link to={{ pathname: '/movies/platform/337' }} >
+						<Link style={linkStyleDrop} to={{ pathname: '/movies/platform/337' }} >
 							Disney+
 						</Link>
 					</NavDropdown.Item>
