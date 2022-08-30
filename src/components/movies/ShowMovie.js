@@ -250,43 +250,89 @@ const ShowMovie = (props) => {
     }
 
     return (
-        <Container className="fluid blackBG">
-            <Card>
-                <Card.Header>{movie.title}</Card.Header>
-                <Card.Body>
-                    <div class="poster">
-                        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>
-                    </div>
-                    <div class="infoGrid">
-                        <h2>{movie.title}</h2> <p>{year()}</p>
-                        {/* <img src={`https://image.tmdb.org/t/p/w500${whereStreaming()}`}></img> */}
-                        <h4>Available for streaming on: {whereStreaming('name')}</h4>
-                        <p>{movie.overview}</p>
-                        <p>{rating()}</p>
-                        <ul>
-                            {genresList()}
-                        </ul>
-                        <p>{movie.runtime} minutes</p>
-                    </div>
 
-                </Card.Body>
-                <Card.Footer>
+        <Container className="blackBG showContainer">
+
+            <div className="poster">
+                <img className="width18-5rem" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>
+            </div>
 
 
-                    {(checkFavorites())
-                        ?
-                        <Button onClick={() => { removeMovieFromFavorites() }}
-                            className="m-2">
-                            Remove From Favorites
-                        </Button>
-                        :
-                        <Button onClick={() => { addMovieToFavorites() }}
-                            className="m-2">
-                            Add To Favorites
-                        </Button>}
-                </Card.Footer>
-            </Card>
         </Container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // <Container className="fluid blackBG">
+        //     <Card>
+        //         <Card.Header></Card.Header>
+        //         <Card.Body>
+        //             <div className="poster">
+        //                 <img className="width18-5rem" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>
+        //             </div>
+        //             <div className="infoGrid">
+        //                 <h2>{movie.title}</h2> <p>{year()}</p>
+        //                 {/* <img src={`https://image.tmdb.org/t/p/w500${whereStreaming()}`}></img> */}
+        //                 <h4>Available for streaming on: {whereStreaming('name')}</h4>
+        //                 <p>{movie.overview}</p>
+        //                 <p>{rating()}</p>
+        //                 <ul>
+        //                     {genresList()}
+        //                 </ul>
+        //                 <p>{movie.runtime} minutes</p>
+        //             </div>
+
+        //         </Card.Body>
+        //         <Card.Footer>
+
+
+        //             {(checkFavorites())
+        //                 ?
+        //                 <Button onClick={() => { removeMovieFromFavorites() }}
+        //                     className="m-2">
+        //                     Remove From Favorites
+        //                 </Button>
+        //                 :
+        //                 <Button onClick={() => { addMovieToFavorites() }}
+        //                     className="m-2">
+        //                     Add To Favorites
+        //                 </Button>}
+        //         </Card.Footer>
+        //     </Card>
+        // </Container>
     )
 }
 

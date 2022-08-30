@@ -22,8 +22,16 @@ code {
   width: 100px
 }
 
+.showContainer {
+  display: grid;
+}
+
 .width17rem{
   width: 17rem;
+}
+
+.width18-5rem{
+  width: 18.5rem;
 }
 
 
