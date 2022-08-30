@@ -10,10 +10,10 @@ import { NavDropdown } from 'react-bootstrap'
 import IndexMoviesByPlatform from '../movies/IndexMoviesByPlatform'
 
 // import "../../../styles/generalStyle.css"
-const linkStyle = {
-	color: 'white',
-	textDecoration: 'none'
-}
+// const linkStyle = {
+// 	color: 'white',
+// 	textDecoration: 'none'
+// }
 
 // PAY ATTENTION TO CALLBACK FUNCTION and whether it is a () or {} -----> implicit vs explicit return
 // Don't use Nav.Link - it breaks them...
