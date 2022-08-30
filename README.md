@@ -1,5 +1,7 @@
 Streamgenie is a movie and TV website where you can search for media titles including favorite TV and movies and do various searches. The website allows for favorites and platform recommendations to find each title.
 
+Deploy Link: https://streamgenie-back.herokuapp.com/
+
 ## FRONT-END
 
 ## User Stories
