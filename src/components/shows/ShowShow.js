@@ -246,7 +246,7 @@ const ShowShow = (props) => {
                             ?
                             <Button onClick={() => { removeShowFromFavorites() }}
                                 className="m-2 grayBlueColorBG" >
-                                Remove From Favoritess
+                                Remove From Favorites
                             </Button>
                             :
                             <Button onClick={() => { addShowToFavorites() }}

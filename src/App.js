@@ -61,6 +61,13 @@ const App = () => {
 		})
 	}
 
+	// <Home
+	// msgAlert={msgAlert} 
+	// setUser={setUser} 
+	// region={region} 
+	// setRegion={setRegion}
+	// />
+
 	return (
 		<Fragment>
 			<Header user={user}
@@ -72,10 +79,12 @@ const App = () => {
 				setSearchIndexMovieList={setSearchIndexMovieList}
 			/>
 			<Routes>
-				<Route path='/' element={<Home
-					msgAlert={msgAlert}
-					user={user}
-				/>} />
+				<Route path='/' element={
+					<>
+					</>
+
+				} 
+				/>
 				<Route
 					path='/sign-up'
 					element={<SignUp 

@@ -93,6 +93,11 @@ html {
   color: white;
 }
 
+.linkStyling{
+  color: 'white';
+	text-Decoration: 'none';
+}
+
 .blackBG{
   background-color: black;
 }

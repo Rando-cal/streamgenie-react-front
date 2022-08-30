@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import { signIn } from '../../../api/auth'
 import messages from '../../shared/AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import './SignIn.css'
+import NavLink from 'react-bootstrap/NavLink'
+import { NavItem } from 'react-bootstrap/'
+import Nav from 'react-bootstrap/Nav'
 
 const SignIn = (props) => {
 	// constructor(props) {
@@ -87,6 +90,11 @@ const SignIn = (props) => {
                         <Button className="margin-10px grayBlueColorBG" variant='secondary' type='submit'>
                             Submit
                         </Button>
+                        <Nav.Item>
+					        <Link className="margin-10px nav-link whiteColorOnly linkStyling" to='/sign-up'>
+						        Sign-up here
+					        </Link>
+				        </Nav.Item>
                     </Form>
                 </div>
             </div>

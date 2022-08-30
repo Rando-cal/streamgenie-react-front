@@ -3,6 +3,7 @@ import Searchbox from './shared/Searchbox.js'
 import { getTopTitles } from '../api/getTopTitles'
 import React, { useState } from 'react'
 import Cards from './shared/Cards/Cards'
+import SignIn from '../components/auth/SignIn/SignIn'
 
 
 const Home = ({ user,radioValue,setRadioValue }) => {
@@ -22,8 +23,10 @@ const Home = ({ user,radioValue,setRadioValue }) => {
 	},[])
 
 	console.log('HOME.JS:topTitlesList:',topTitlesList);
+	
 
-	return (		
+	return (
+	
 		<>
 			<Cards topTitlesList={topTitlesList}/>
 		</>
