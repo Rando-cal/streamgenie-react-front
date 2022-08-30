@@ -72,18 +72,31 @@ const App = () => {
 				setSearchIndexMovieList={setSearchIndexMovieList}
 			/>
 			<Routes>
-				<Route path='/' element={<Home
+				{
+					user
+						?
+						<Route path='/' element={<Home
+							msgAlert={msgAlert}
+							user={user}
+						/>} />
+						:
+						<Route
+							path='/'
+							element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
+						/>
+				}
+				{/* <Route path='/' element={<Home
 					msgAlert={msgAlert}
 					user={user}
-				/>} />
+				/>} /> */}
 				<Route
 					path='/sign-up'
-					element={<SignUp 
-								msgAlert={msgAlert} 
-								setUser={setUser} 
-								region={region} 
-								setRegion={setRegion}
-							/>}
+					element={<SignUp
+						msgAlert={msgAlert}
+						setUser={setUser}
+						region={region}
+						setRegion={setRegion}
+					/>}
 				/>
 				<Route
 					path='/sign-in'
