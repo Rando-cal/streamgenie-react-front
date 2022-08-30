@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Cards from './shared/Cards/Cards'
 
 
-const Home = ({ user,radioValue,setRadioValue }) => {
+const Home = ({ user, radioValue, setRadioValue }) => {
 	// const { msgAlert, user } = props
 	console.log('props in home', user)
 
@@ -17,15 +17,16 @@ const Home = ({ user,radioValue,setRadioValue }) => {
 	// get top movies from netlix or whatever
 	useEffect(() => {
 		getTopTitles()
-		.then((res) => {setTopTitlesList(res.data.movies)})
-		.catch((error)=> {console.log(error)})
-	},[])
+			.then((res) => { setTopTitlesList(res.data.movies) })
+			.catch((error) => { console.log(error) })
+	}, [])
 
-	console.log('HOME.JS:topTitlesList:',topTitlesList);
+	console.log('HOME.JS:topTitlesList:', topTitlesList);
 
-	return (		
+	return (
 		<>
-			<Cards topTitlesList={topTitlesList}/>
+			{/* <h1 className='titleHeader'>Popular Movies</h1> */}
+			<Cards topTitlesList={topTitlesList} />
 		</>
 	)
 }
