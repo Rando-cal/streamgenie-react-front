@@ -73,15 +73,22 @@ Backend
 ![Color Palette](./Assets/color-pallette.PNG)
 
 ## Font
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter&family=M+PLUS+1p:wght@300&family=Poiret+One&family=Poppins:wght@500;600;700&family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+Google Roboto
+
+link rel="preconnect" href="https://fonts.googleapis.com"
+link rel="preconnect" href="https://fonts.gstatic.com" crossorigin
+link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter&family=M+PLUS+1p:wght@300&family=Poiret+One&family=Poppins:wght@500;600;700&family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
 font-family: 'Bungee', cursive;
+
 font-family: 'Inter', sans-serif;
+
 font-family: 'M PLUS 1p', sans-serif;
+
 font-family: 'Poiret One', cursive;
+
 font-family: 'Poppins', sans-serif;
+
 font-family: 'Source Sans Pro', sans-serif;
 
 
