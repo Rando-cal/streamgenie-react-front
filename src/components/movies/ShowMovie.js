@@ -197,7 +197,7 @@ const ShowMovie = (props) => {
 
         if (term == 'name') {
             if (providers.length == 0) {
-                return <li>"No available streaming data."</li>
+                return <li>No available streaming data</li>
             }
             else {
                 const providerName = providers.map((provider, index) => {
