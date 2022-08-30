@@ -60,12 +60,12 @@ Backend
 
 ## Wireframes
 
-![Home](./Assets/S1.PNG)
-![Search](./Assets/s2.PNG)
-![Login](./Assets/s3.PNG)
-![Show](./Assets/s4.PNG)
-![Cart](./Assets/s5.PNG)
-![Logout](./Assets/s6.PNG)
+![Home](./public/Assets/S1.PNG)
+![Search](./public/Assets/s2.PNG)
+![Login](./public/Assets/s3.PNG)
+![Show](./public/Assets/s4.PNG)
+![Cart](./public/Assets/s5.PNG)
+![Logout](./public/Assets/s6.PNG)
 
 ## Color Pallette
 #191308 (Black Chocolate), #322A26 (Black Coffee), #454B66 (Independence), #677DB7 (Glaucous), #9CA3DB (Maximum Blue Purple), #000000 (black), #FFFFFF (white)
