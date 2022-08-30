@@ -95,4 +95,4 @@ font-family: 'Source Sans Pro', sans-serif;
 
 ## Roles
 Randy D'Abbraccio - Frontend & Manager |
-Christian Brewer - Backend API
+Christian Brewer - Backend API & Frontend
